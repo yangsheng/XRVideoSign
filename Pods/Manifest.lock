@@ -1,0 +1,20 @@
+PODS:
+  - IQKeyboardManager (6.2.0)
+  - WRNavigationBar (1.2.0)
+
+DEPENDENCIES:
+  - IQKeyboardManager
+  - WRNavigationBar
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - IQKeyboardManager
+    - WRNavigationBar
+
+SPEC CHECKSUMS:
+  IQKeyboardManager: 6194101620b73af5e67900b8f89707a99de0b804
+  WRNavigationBar: dc952230effbb646785f962587caaac06c60f229
+
+PODFILE CHECKSUM: 1c4c132a69f3c8d1a7c91fdeb49a3c481ca4ddc3
+
+COCOAPODS: 1.6.0.beta.2
