@@ -12,6 +12,10 @@
 
 @interface XRLoginViewController ()
 @property (nonatomic,strong) IBOutlet UIButton *loginBtn;
+@property (nonatomic,strong) IBOutlet UITextField *groupText;
+@property (nonatomic,strong) IBOutlet UITextField *userText;
+@property (nonatomic,strong) IBOutlet UITextField *pwdText;
+
 @property (nonatomic,strong) NSArray *groupList;
 @end
 
@@ -27,6 +31,7 @@
 
 -(void)initUI{
     self.loginBtn.layer.cornerRadius = 15;
+    self.groupText.text = @"国金资本";
 }
 
 - (IBAction)loginBtnClicked:(id)sender {
@@ -39,7 +44,7 @@
     builder.showMask = YES;
     builder.cancelTextColor = UIColor.redColor;
     [CDZPicker showSinglePickerInView:self.view withBuilder:builder strings:self.groupList confirm:^(NSArray<NSString *> * _Nonnull strings, NSArray<NSNumber *> * _Nonnull indexs) {
-      //  self.usernameTextField.text = strings.firstObject;
+        self.groupText.text = strings.firstObject;
         //          NSLog(@"strings:%@ indexs:%@",strings,indexs);
     }cancel:^{
         
