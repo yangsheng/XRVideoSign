@@ -7,6 +7,7 @@
 //
 
 #import "XRLoginViewController.h"
+#import "XRHomeViewController.h"
 #import "CDZPicker.h"
 
 @interface XRLoginViewController ()
@@ -26,6 +27,11 @@
 
 -(void)initUI{
     self.loginBtn.layer.cornerRadius = 15;
+}
+
+- (IBAction)loginBtnClicked:(id)sender {
+    XRHomeViewController *homeVC = [[XRHomeViewController alloc] initWithNibName:@"XRHomeViewController" bundle:nil];
+    [self.navigationController pushViewController:homeVC animated:YES];
 }
 
 - (IBAction)selectGroupBtnClicked:(id)sender {

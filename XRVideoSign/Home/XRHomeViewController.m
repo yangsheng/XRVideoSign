@@ -7,6 +7,7 @@
 //
 
 #import "XRHomeViewController.h"
+#import "WRNavigationBar.h"
 
 @interface XRHomeViewController ()
 
@@ -17,8 +18,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    self.title = @"待面签报表";
+    self.navigationController.navigationBar.hidden = NO;
+    [self setupNav];
 }
 
+- (void)setupNav{
+    // 设置导航栏颜色
+    [self wr_setNavBarBarTintColor:ssRGBHex(0x495987)];
+    // 设置导航栏按钮和标题颜色
+    [self wr_setNavBarTintColor:[UIColor whiteColor]];
+    // 设置导航栏标题默认颜色
+    [self wr_setNavBarTitleColor:[UIColor whiteColor]];
+}
 /*
 #pragma mark - Navigation
 
