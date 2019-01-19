@@ -54,6 +54,9 @@
                     <state key="normal" title="   退出" image="icon_exit">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
+                    <connections>
+                        <action selector="exitBtnClicked:" destination="-1" eventType="touchUpInside" id="HPr-Ui-agp"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" red="0.28769966959953308" green="0.31357687711715698" blue="0.4178517758846283" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

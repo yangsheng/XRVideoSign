@@ -10,6 +10,7 @@
 #import "WRNavigationBar.h"
 #import "XRSlideViewController.h"
 #import "UIViewController+CWLateralSlide.h"
+#import "XRLoginViewController.h"
 
 @interface XRHomeViewController ()
 
@@ -21,8 +22,20 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.title = @"待面签报表";
-    self.navigationController.navigationBar.hidden = NO;
     [self setupNav];
+    
+    //获取通知中心单例对象
+    NSNotificationCenter * center = [NSNotificationCenter defaultCenter];
+    //添加当前类对象为一个观察者，name和object设置为nil，表示接收一切通知
+    [center addObserver:self selector:@selector(doExit:) name:@"ExitNofication" object:nil];
+    [self registerSlideGesture];
+}
+
+-(void)doExit:(id)sender{
+    [self.navigationController popToViewController:self.vc animated:NO];
+}
+
+- (void)registerSlideGesture{
     // 注册手势驱动
     __weak typeof(self)weakSelf = self;
     // 第一个参数为是否开启边缘手势，开启则默认从边缘50距离内有效，第二个block为手势过程中我们希望做的操作
@@ -33,7 +46,6 @@
         }
     }];
 }
-
 - (void)setupNav{
     // 设置导航栏颜色
     [self wr_setNavBarBarTintColor:ssRGBHex(0x495987)];
@@ -70,14 +82,17 @@
     conf.showAnimDuration = 0.2;
     conf.HiddenAnimDuration = 0.2;
     conf.maskAlpha = 0.1;
-    
+
     [self cw_showDrawerViewController:slideVC animationType:CWDrawerAnimationTypeDefault configuration:conf];
+
 }
 -(IBAction)userBtnClicked:(id)sender{
     [self leftClick];
 }
 
 -(IBAction)searchBtnclicked:(id)sender{
-    
+    XRLoginViewController *homeVC = [[XRLoginViewController alloc] initWithNibName:@"XRLoginViewController" bundle:nil];
+    //[self.navigationController pushViewController:homeVC animated:YES];
+    [self.navigationController popToViewController:self.vc animated:NO];
 }
 @end

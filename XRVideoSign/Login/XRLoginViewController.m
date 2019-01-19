@@ -24,9 +24,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.navigationController.navigationBar.hidden = YES;
     [self initUI];
     self.groupList = @[@"国金资本",@"旭冉科技",@"奇牛软件",@"还没想好"];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
+    [super viewWillAppear:animated];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [self.navigationController setNavigationBarHidden:NO animated:NO];
+    [super viewWillDisappear:animated];
 }
 
 -(void)initUI{
@@ -36,6 +45,7 @@
 
 - (IBAction)loginBtnClicked:(id)sender {
     XRHomeViewController *homeVC = [[XRHomeViewController alloc] initWithNibName:@"XRHomeViewController" bundle:nil];
+    homeVC.vc = self;
     [self.navigationController pushViewController:homeVC animated:YES];
 }
 

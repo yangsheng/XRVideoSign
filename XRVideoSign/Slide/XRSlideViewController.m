@@ -28,5 +28,14 @@
     // Pass the selected object to the new view controller.
 }
 */
+- (IBAction)exitBtnClicked:(id)sender {
+    //创建一个消息对象
+    NSNotification * notice = [NSNotification notificationWithName:@"ExitNofication" object:nil userInfo:nil];
+    //发送消息
+    [[NSNotificationCenter defaultCenter] postNotification:notice];
+
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 @end

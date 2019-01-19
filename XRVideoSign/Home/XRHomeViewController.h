@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface XRHomeViewController : UIViewController
-
+@property (nonatomic,strong) UIViewController *vc;
 @end
 
 NS_ASSUME_NONNULL_END
