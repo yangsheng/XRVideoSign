@@ -1,20 +1,24 @@
 PODS:
+  - CWLateralSlide (1.6.3)
   - IQKeyboardManager (6.2.0)
   - WRNavigationBar (1.2.0)
 
 DEPENDENCIES:
+  - CWLateralSlide
   - IQKeyboardManager
   - WRNavigationBar
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - CWLateralSlide
     - IQKeyboardManager
     - WRNavigationBar
 
 SPEC CHECKSUMS:
+  CWLateralSlide: 1b9a848873b93de45cfefe6389765b12aa70982c
   IQKeyboardManager: 6194101620b73af5e67900b8f89707a99de0b804
   WRNavigationBar: dc952230effbb646785f962587caaac06c60f229
 
-PODFILE CHECKSUM: 1c4c132a69f3c8d1a7c91fdeb49a3c481ca4ddc3
+PODFILE CHECKSUM: fa2980903ecc6b8c9c868c3b992a17328da69dd8
 
 COCOAPODS: 1.6.0.beta.2

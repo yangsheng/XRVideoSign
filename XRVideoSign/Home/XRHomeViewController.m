@@ -8,6 +8,8 @@
 
 #import "XRHomeViewController.h"
 #import "WRNavigationBar.h"
+#import "XRSlideViewController.h"
+#import "UIViewController+CWLateralSlide.h"
 
 @interface XRHomeViewController ()
 
@@ -21,6 +23,15 @@
     self.title = @"待面签报表";
     self.navigationController.navigationBar.hidden = NO;
     [self setupNav];
+    // 注册手势驱动
+    __weak typeof(self)weakSelf = self;
+    // 第一个参数为是否开启边缘手势，开启则默认从边缘50距离内有效，第二个block为手势过程中我们希望做的操作
+    [self cw_registerShowIntractiveWithEdgeGesture:NO transitionDirectionAutoBlock:^(CWDrawerTransitionDirection direction) {
+        //NSLog(@"direction = %ld", direction);
+        if (direction == CWDrawerTransitionFromLeft) { // 左侧滑出
+            [weakSelf leftClick];
+        }
+    }];
 }
 
 - (void)setupNav{
@@ -30,15 +41,43 @@
     [self wr_setNavBarTintColor:[UIColor whiteColor]];
     // 设置导航栏标题默认颜色
     [self wr_setNavBarTitleColor:[UIColor whiteColor]];
-}
-/*
-#pragma mark - Navigation
+    
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    //设置图片
+    UIImage *imageForButton = [UIImage imageNamed:@"icon_user"];
+    [button setImage:imageForButton forState:UIControlStateNormal];
+    button.frame = CGRectMake(0, 0 , 30, 30);
+    [button addTarget:self action:@selector(userBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIBarButtonItem *leftNavItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+    self.navigationItem.leftBarButtonItem = leftNavItem;
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+    UIBarButtonItem *rightNavItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_search"]
+                                                                     style:UIBarButtonItemStylePlain
+                                                                    target:self
+                                                                    action:@selector(searchBtnclicked:)];
 
+  //  rightNavItem.imageInsets = UIEdgeInsetsMake(0, -12, 0, 0);
+    self.navigationItem.rightBarButtonItem = rightNavItem;
+}
+
+- (void)leftClick{
+    XRSlideViewController *slideVC = [[XRSlideViewController alloc] initWithNibName:@"XRSlideViewController" bundle:nil];
+    CWLateralSlideConfiguration *conf = [CWLateralSlideConfiguration defaultConfiguration];
+    conf.direction = CWDrawerTransitionFromLeft;
+    conf.distance = kCWSCREENWIDTH * 0.6;
+    conf.finishPercent = 0.2f;
+    conf.showAnimDuration = 0.2;
+    conf.HiddenAnimDuration = 0.2;
+    conf.maskAlpha = 0.1;
+    
+    [self cw_showDrawerViewController:slideVC animationType:CWDrawerAnimationTypeDefault configuration:conf];
+}
+-(IBAction)userBtnClicked:(id)sender{
+    [self leftClick];
+}
+
+-(IBAction)searchBtnclicked:(id)sender{
+    
+}
 @end

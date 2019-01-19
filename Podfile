@@ -8,4 +8,5 @@ target 'XRVideoSign' do
   # Pods for XRVideoSign
   pod 'IQKeyboardManager'
   pod 'WRNavigationBar'
+  pod 'CWLateralSlide'
 end
