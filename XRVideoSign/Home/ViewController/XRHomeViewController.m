@@ -11,9 +11,10 @@
 #import "XRSlideViewController.h"
 #import "UIViewController+CWLateralSlide.h"
 #import "XRLoginViewController.h"
+#import "ListTableViewCell.h"
 
 @interface XRHomeViewController ()
-
+@property (nonatomic, strong) IBOutlet UITableView *tableView;
 @end
 
 @implementation XRHomeViewController
@@ -29,6 +30,10 @@
     //添加当前类对象为一个观察者，name和object设置为nil，表示接收一切通知
     [center addObserver:self selector:@selector(doExit:) name:@"ExitNofication" object:nil];
     [self registerSlideGesture];
+    
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    [self.tableView registerNib:[UINib nibWithNibName:@"ListTableViewCell" bundle:nil] forCellReuseIdentifier:@"ListTableViewCell"];
+    
 }
 
 -(void)doExit:(id)sender{
@@ -91,8 +96,24 @@
 }
 
 -(IBAction)searchBtnclicked:(id)sender{
-    XRLoginViewController *homeVC = [[XRLoginViewController alloc] initWithNibName:@"XRLoginViewController" bundle:nil];
-    //[self.navigationController pushViewController:homeVC animated:YES];
-    [self.navigationController popToViewController:self.vc animated:NO];
+
 }
+
+#pragma mark - tableview delegate / dataSource
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 10;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    ListTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"ListTableViewCell"];
+    return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 240;
+}
+
 @end

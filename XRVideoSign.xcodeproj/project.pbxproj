@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		1E29393021F3D3CC0026D6FC /* XRSlideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E29392E21F3D3CC0026D6FC /* XRSlideViewController.m */; };
 		1E29393121F3D3CC0026D6FC /* XRSlideViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E29392F21F3D3CC0026D6FC /* XRSlideViewController.xib */; };
+		1E29393721F51C7E0026D6FC /* ListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E29393521F51C7E0026D6FC /* ListTableViewCell.m */; };
+		1E29393821F51C7E0026D6FC /* ListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E29393621F51C7E0026D6FC /* ListTableViewCell.xib */; };
 		1E2A06CA21F29B5F00F5422C /* XRHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E2A06C821F29B5F00F5422C /* XRHomeViewController.m */; };
 		1E2A06CB21F29B5F00F5422C /* XRHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E2A06C921F29B5F00F5422C /* XRHomeViewController.xib */; };
 		1E8036A921F1FBF600F465FC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E8036A821F1FBF600F465FC /* AppDelegate.m */; };
@@ -29,6 +31,9 @@
 		1E29392D21F3D3CC0026D6FC /* XRSlideViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XRSlideViewController.h; sourceTree = "<group>"; };
 		1E29392E21F3D3CC0026D6FC /* XRSlideViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XRSlideViewController.m; sourceTree = "<group>"; };
 		1E29392F21F3D3CC0026D6FC /* XRSlideViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XRSlideViewController.xib; sourceTree = "<group>"; };
+		1E29393421F51C7E0026D6FC /* ListTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListTableViewCell.h; sourceTree = "<group>"; };
+		1E29393521F51C7E0026D6FC /* ListTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ListTableViewCell.m; sourceTree = "<group>"; };
+		1E29393621F51C7E0026D6FC /* ListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListTableViewCell.xib; sourceTree = "<group>"; };
 		1E2A06C721F29B5F00F5422C /* XRHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XRHomeViewController.h; sourceTree = "<group>"; };
 		1E2A06C821F29B5F00F5422C /* XRHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XRHomeViewController.m; sourceTree = "<group>"; };
 		1E2A06C921F29B5F00F5422C /* XRHomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XRHomeViewController.xib; sourceTree = "<group>"; };
@@ -75,12 +80,31 @@
 			path = Slide;
 			sourceTree = "<group>";
 		};
-		1E2A06C521F29AD300F5422C /* Home */ = {
+		1E29393221F3F2030026D6FC /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
 				1E2A06C721F29B5F00F5422C /* XRHomeViewController.h */,
 				1E2A06C821F29B5F00F5422C /* XRHomeViewController.m */,
 				1E2A06C921F29B5F00F5422C /* XRHomeViewController.xib */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		1E29393321F3F2150026D6FC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1E29393421F51C7E0026D6FC /* ListTableViewCell.h */,
+				1E29393521F51C7E0026D6FC /* ListTableViewCell.m */,
+				1E29393621F51C7E0026D6FC /* ListTableViewCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1E2A06C521F29AD300F5422C /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				1E29393321F3F2150026D6FC /* View */,
+				1E29393221F3F2030026D6FC /* ViewController */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -252,6 +276,7 @@
 				1E8036B421F1FBFB00F465FC /* LaunchScreen.storyboard in Resources */,
 				1E8036CC21F2108200F465FC /* CDZContentView.xib in Resources */,
 				1E8036B121F1FBFB00F465FC /* Assets.xcassets in Resources */,
+				1E29393821F51C7E0026D6FC /* ListTableViewCell.xib in Resources */,
 				1E8036AF21F1FBF600F465FC /* Main.storyboard in Resources */,
 				1E2A06CB21F29B5F00F5422C /* XRHomeViewController.xib in Resources */,
 			);
@@ -316,6 +341,7 @@
 				1E8036B721F1FBFB00F465FC /* main.m in Sources */,
 				1E8036CB21F2108200F465FC /* CDZPicker.m in Sources */,
 				1E8036A921F1FBF600F465FC /* AppDelegate.m in Sources */,
+				1E29393721F51C7E0026D6FC /* ListTableViewCell.m in Sources */,
 				1E29393021F3D3CC0026D6FC /* XRSlideViewController.m in Sources */,
 				1E2A06CA21F29B5F00F5422C /* XRHomeViewController.m in Sources */,
 			);
