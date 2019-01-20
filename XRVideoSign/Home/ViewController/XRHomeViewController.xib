@@ -38,6 +38,9 @@
                     <state key="normal" title="开始面签">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
+                    <connections>
+                        <action selector="recordBtnClicked:" destination="-1" eventType="touchUpInside" id="pWF-DT-xhk"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" red="0.9646109938621521" green="0.96477228403091431" blue="0.96458977460861206" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -12,6 +12,7 @@
 #import "UIViewController+CWLateralSlide.h"
 #import "XRLoginViewController.h"
 #import "ListTableViewCell.h"
+#import "XRRecordVideoViewController.h"
 
 @interface XRHomeViewController ()
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
@@ -98,6 +99,10 @@
 -(IBAction)searchBtnclicked:(id)sender{
 
 }
+- (IBAction)recordBtnClicked:(id)sender {
+    XRRecordVideoViewController *recordVC = [[XRRecordVideoViewController alloc] initWithNibName:@"XRRecordVideoViewController" bundle:nil];
+    [self.navigationController pushViewController:recordVC animated:YES];
+}
 
 #pragma mark - tableview delegate / dataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -113,7 +118,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 240;
+    return 250;
 }
 
 @end

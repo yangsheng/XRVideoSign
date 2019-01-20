@@ -11,6 +11,8 @@
 		1E29393121F3D3CC0026D6FC /* XRSlideViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E29392F21F3D3CC0026D6FC /* XRSlideViewController.xib */; };
 		1E29393721F51C7E0026D6FC /* ListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E29393521F51C7E0026D6FC /* ListTableViewCell.m */; };
 		1E29393821F51C7E0026D6FC /* ListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E29393621F51C7E0026D6FC /* ListTableViewCell.xib */; };
+		1E29393C21F52FE50026D6FC /* XRRecordVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E29393A21F52FE50026D6FC /* XRRecordVideoViewController.m */; };
+		1E29393D21F52FE50026D6FC /* XRRecordVideoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E29393B21F52FE50026D6FC /* XRRecordVideoViewController.xib */; };
 		1E2A06CA21F29B5F00F5422C /* XRHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E2A06C821F29B5F00F5422C /* XRHomeViewController.m */; };
 		1E2A06CB21F29B5F00F5422C /* XRHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E2A06C921F29B5F00F5422C /* XRHomeViewController.xib */; };
 		1E8036A921F1FBF600F465FC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E8036A821F1FBF600F465FC /* AppDelegate.m */; };
@@ -34,6 +36,9 @@
 		1E29393421F51C7E0026D6FC /* ListTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListTableViewCell.h; sourceTree = "<group>"; };
 		1E29393521F51C7E0026D6FC /* ListTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ListTableViewCell.m; sourceTree = "<group>"; };
 		1E29393621F51C7E0026D6FC /* ListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListTableViewCell.xib; sourceTree = "<group>"; };
+		1E29393921F52FE50026D6FC /* XRRecordVideoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XRRecordVideoViewController.h; sourceTree = "<group>"; };
+		1E29393A21F52FE50026D6FC /* XRRecordVideoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XRRecordVideoViewController.m; sourceTree = "<group>"; };
+		1E29393B21F52FE50026D6FC /* XRRecordVideoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XRRecordVideoViewController.xib; sourceTree = "<group>"; };
 		1E2A06C721F29B5F00F5422C /* XRHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XRHomeViewController.h; sourceTree = "<group>"; };
 		1E2A06C821F29B5F00F5422C /* XRHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XRHomeViewController.m; sourceTree = "<group>"; };
 		1E2A06C921F29B5F00F5422C /* XRHomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XRHomeViewController.xib; sourceTree = "<group>"; };
@@ -86,6 +91,9 @@
 				1E2A06C721F29B5F00F5422C /* XRHomeViewController.h */,
 				1E2A06C821F29B5F00F5422C /* XRHomeViewController.m */,
 				1E2A06C921F29B5F00F5422C /* XRHomeViewController.xib */,
+				1E29393921F52FE50026D6FC /* XRRecordVideoViewController.h */,
+				1E29393A21F52FE50026D6FC /* XRRecordVideoViewController.m */,
+				1E29393B21F52FE50026D6FC /* XRRecordVideoViewController.xib */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -278,6 +286,7 @@
 				1E8036B121F1FBFB00F465FC /* Assets.xcassets in Resources */,
 				1E29393821F51C7E0026D6FC /* ListTableViewCell.xib in Resources */,
 				1E8036AF21F1FBF600F465FC /* Main.storyboard in Resources */,
+				1E29393D21F52FE50026D6FC /* XRRecordVideoViewController.xib in Resources */,
 				1E2A06CB21F29B5F00F5422C /* XRHomeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -343,6 +352,7 @@
 				1E8036A921F1FBF600F465FC /* AppDelegate.m in Sources */,
 				1E29393721F51C7E0026D6FC /* ListTableViewCell.m in Sources */,
 				1E29393021F3D3CC0026D6FC /* XRSlideViewController.m in Sources */,
+				1E29393C21F52FE50026D6FC /* XRRecordVideoViewController.m in Sources */,
 				1E2A06CA21F29B5F00F5422C /* XRHomeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
