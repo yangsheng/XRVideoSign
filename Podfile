@@ -9,4 +9,6 @@ target 'XRVideoSign' do
   pod 'IQKeyboardManager'
   pod 'WRNavigationBar'
   pod 'CWLateralSlide'
+  pod 'AFNetworking'
+  pod 'SVProgressHUD'
 end

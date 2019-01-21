@@ -13,6 +13,15 @@
 		1E29393821F51C7E0026D6FC /* ListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E29393621F51C7E0026D6FC /* ListTableViewCell.xib */; };
 		1E29393C21F52FE50026D6FC /* XRRecordVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E29393A21F52FE50026D6FC /* XRRecordVideoViewController.m */; };
 		1E29393D21F52FE50026D6FC /* XRRecordVideoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E29393B21F52FE50026D6FC /* XRRecordVideoViewController.xib */; };
+		1E29397621F674CF0026D6FC /* NSString+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E29396921F674CF0026D6FC /* NSString+Base64.m */; };
+		1E29397721F674CF0026D6FC /* AESCrypt.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E29396A21F674CF0026D6FC /* AESCrypt.m */; };
+		1E29397821F674CF0026D6FC /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E29397221F674CF0026D6FC /* GTMBase64.m */; };
+		1E29397921F674CF0026D6FC /* DES3Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E29397321F674CF0026D6FC /* DES3Util.m */; };
+		1E29397A21F674CF0026D6FC /* NSData+CommonCrypto.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E29397421F674CF0026D6FC /* NSData+CommonCrypto.m */; };
+		1E29397B21F674CF0026D6FC /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E29397521F674CF0026D6FC /* NSData+Base64.m */; };
+		1E29398221F676770026D6FC /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E29397D21F676770026D6FC /* Reachability.m */; };
+		1E29398321F676770026D6FC /* HQMBaseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E29398121F676770026D6FC /* HQMBaseRequest.m */; };
+		1E29398921F678C80026D6FC /* XRLoginRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E29398821F678C80026D6FC /* XRLoginRequest.m */; };
 		1E2A06CA21F29B5F00F5422C /* XRHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E2A06C821F29B5F00F5422C /* XRHomeViewController.m */; };
 		1E2A06CB21F29B5F00F5422C /* XRHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E2A06C921F29B5F00F5422C /* XRHomeViewController.xib */; };
 		1E8036A921F1FBF600F465FC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E8036A821F1FBF600F465FC /* AppDelegate.m */; };
@@ -39,6 +48,27 @@
 		1E29393921F52FE50026D6FC /* XRRecordVideoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XRRecordVideoViewController.h; sourceTree = "<group>"; };
 		1E29393A21F52FE50026D6FC /* XRRecordVideoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XRRecordVideoViewController.m; sourceTree = "<group>"; };
 		1E29393B21F52FE50026D6FC /* XRRecordVideoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XRRecordVideoViewController.xib; sourceTree = "<group>"; };
+		1E29396921F674CF0026D6FC /* NSString+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Base64.m"; sourceTree = "<group>"; };
+		1E29396A21F674CF0026D6FC /* AESCrypt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AESCrypt.m; sourceTree = "<group>"; };
+		1E29396B21F674CF0026D6FC /* DES3Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DES3Util.h; sourceTree = "<group>"; };
+		1E29396C21F674CF0026D6FC /* GTMBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMBase64.h; sourceTree = "<group>"; };
+		1E29396D21F674CF0026D6FC /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
+		1E29396E21F674CF0026D6FC /* NSData+CommonCrypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+CommonCrypto.h"; sourceTree = "<group>"; };
+		1E29396F21F674CF0026D6FC /* AESCrypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AESCrypt.h; sourceTree = "<group>"; };
+		1E29397021F674CF0026D6FC /* NSString+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Base64.h"; sourceTree = "<group>"; };
+		1E29397121F674CF0026D6FC /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
+		1E29397221F674CF0026D6FC /* GTMBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMBase64.m; sourceTree = "<group>"; };
+		1E29397321F674CF0026D6FC /* DES3Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DES3Util.m; sourceTree = "<group>"; };
+		1E29397421F674CF0026D6FC /* NSData+CommonCrypto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+CommonCrypto.m"; sourceTree = "<group>"; };
+		1E29397521F674CF0026D6FC /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
+		1E29397D21F676770026D6FC /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		1E29397E21F676770026D6FC /* HQMBaseRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HQMBaseRequest.h; sourceTree = "<group>"; };
+		1E29397F21F676770026D6FC /* HQMRequestCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HQMRequestCallback.h; sourceTree = "<group>"; };
+		1E29398021F676770026D6FC /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		1E29398121F676770026D6FC /* HQMBaseRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HQMBaseRequest.m; sourceTree = "<group>"; };
+		1E29398421F677F80026D6FC /* CommonMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonMacro.h; sourceTree = "<group>"; };
+		1E29398721F678C80026D6FC /* XRLoginRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XRLoginRequest.h; sourceTree = "<group>"; };
+		1E29398821F678C80026D6FC /* XRLoginRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XRLoginRequest.m; sourceTree = "<group>"; };
 		1E2A06C721F29B5F00F5422C /* XRHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XRHomeViewController.h; sourceTree = "<group>"; };
 		1E2A06C821F29B5F00F5422C /* XRHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XRHomeViewController.m; sourceTree = "<group>"; };
 		1E2A06C921F29B5F00F5422C /* XRHomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XRHomeViewController.xib; sourceTree = "<group>"; };
@@ -108,6 +138,67 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		1E29396721F674990026D6FC /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				1E29398421F677F80026D6FC /* CommonMacro.h */,
+				1E29397C21F676770026D6FC /* BaseRequestAPI */,
+				1E29396821F674CF0026D6FC /* AES */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		1E29396821F674CF0026D6FC /* AES */ = {
+			isa = PBXGroup;
+			children = (
+				1E29396F21F674CF0026D6FC /* AESCrypt.h */,
+				1E29396A21F674CF0026D6FC /* AESCrypt.m */,
+				1E29396B21F674CF0026D6FC /* DES3Util.h */,
+				1E29397321F674CF0026D6FC /* DES3Util.m */,
+				1E29396C21F674CF0026D6FC /* GTMBase64.h */,
+				1E29397221F674CF0026D6FC /* GTMBase64.m */,
+				1E29397121F674CF0026D6FC /* GTMDefines.h */,
+				1E29396D21F674CF0026D6FC /* NSData+Base64.h */,
+				1E29397521F674CF0026D6FC /* NSData+Base64.m */,
+				1E29396E21F674CF0026D6FC /* NSData+CommonCrypto.h */,
+				1E29397421F674CF0026D6FC /* NSData+CommonCrypto.m */,
+				1E29397021F674CF0026D6FC /* NSString+Base64.h */,
+				1E29396921F674CF0026D6FC /* NSString+Base64.m */,
+			);
+			path = AES;
+			sourceTree = "<group>";
+		};
+		1E29397C21F676770026D6FC /* BaseRequestAPI */ = {
+			isa = PBXGroup;
+			children = (
+				1E29397E21F676770026D6FC /* HQMBaseRequest.h */,
+				1E29398121F676770026D6FC /* HQMBaseRequest.m */,
+				1E29397F21F676770026D6FC /* HQMRequestCallback.h */,
+				1E29398021F676770026D6FC /* Reachability.h */,
+				1E29397D21F676770026D6FC /* Reachability.m */,
+			);
+			path = BaseRequestAPI;
+			sourceTree = "<group>";
+		};
+		1E29398521F678510026D6FC /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1E8036BF21F1FE1A00F465FC /* XRLoginViewController.h */,
+				1E8036C021F1FE1A00F465FC /* XRLoginViewController.m */,
+				1E8036C121F1FE1A00F465FC /* XRLoginViewController.xib */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		1E29398621F678930026D6FC /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				1E29398721F678C80026D6FC /* XRLoginRequest.h */,
+				1E29398821F678C80026D6FC /* XRLoginRequest.m */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
 		1E2A06C521F29AD300F5422C /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -147,6 +238,7 @@
 		1E8036A621F1FBF600F465FC /* XRVideoSign */ = {
 			isa = PBXGroup;
 			children = (
+				1E29396721F674990026D6FC /* Common */,
 				1E29392C21F3D39D0026D6FC /* Slide */,
 				1E2A06C621F29B3900F5422C /* Others */,
 				1E2A06C521F29AD300F5422C /* Home */,
@@ -166,9 +258,8 @@
 		1E8036BE21F1FDE200F465FC /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				1E8036BF21F1FE1A00F465FC /* XRLoginViewController.h */,
-				1E8036C021F1FE1A00F465FC /* XRLoginViewController.m */,
-				1E8036C121F1FE1A00F465FC /* XRLoginViewController.xib */,
+				1E29398621F678930026D6FC /* Request */,
+				1E29398521F678510026D6FC /* ViewController */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -304,12 +395,14 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-XRVideoSign/Pods-XRVideoSign-resources.sh",
 				"${PODS_ROOT}/IQKeyboardManager/IQKeyboardManager/Resources/IQKeyboardManager.bundle",
+				"${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/IQKeyboardManager.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SVProgressHUD.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -347,9 +440,18 @@
 			files = (
 				1E8036CD21F2108200F465FC /* CDZContentView.m in Sources */,
 				1E8036C221F1FE1A00F465FC /* XRLoginViewController.m in Sources */,
+				1E29397B21F674CF0026D6FC /* NSData+Base64.m in Sources */,
 				1E8036B721F1FBFB00F465FC /* main.m in Sources */,
+				1E29398321F676770026D6FC /* HQMBaseRequest.m in Sources */,
+				1E29398921F678C80026D6FC /* XRLoginRequest.m in Sources */,
+				1E29397921F674CF0026D6FC /* DES3Util.m in Sources */,
+				1E29397721F674CF0026D6FC /* AESCrypt.m in Sources */,
 				1E8036CB21F2108200F465FC /* CDZPicker.m in Sources */,
+				1E29397A21F674CF0026D6FC /* NSData+CommonCrypto.m in Sources */,
+				1E29397621F674CF0026D6FC /* NSString+Base64.m in Sources */,
 				1E8036A921F1FBF600F465FC /* AppDelegate.m in Sources */,
+				1E29398221F676770026D6FC /* Reachability.m in Sources */,
+				1E29397821F674CF0026D6FC /* GTMBase64.m in Sources */,
 				1E29393721F51C7E0026D6FC /* ListTableViewCell.m in Sources */,
 				1E29393021F3D3CC0026D6FC /* XRSlideViewController.m in Sources */,
 				1E29393C21F52FE50026D6FC /* XRRecordVideoViewController.m in Sources */,
@@ -507,7 +609,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.xrinfo.XRVideoSign;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xrinfo.XRVideoSign1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -529,7 +631,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.xrinfo.XRVideoSign;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xrinfo.XRVideoSign1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};

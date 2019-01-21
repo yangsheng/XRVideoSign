@@ -1,24 +1,46 @@
 PODS:
+  - AFNetworking (3.2.1):
+    - AFNetworking/NSURLSession (= 3.2.1)
+    - AFNetworking/Reachability (= 3.2.1)
+    - AFNetworking/Security (= 3.2.1)
+    - AFNetworking/Serialization (= 3.2.1)
+    - AFNetworking/UIKit (= 3.2.1)
+  - AFNetworking/NSURLSession (3.2.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.2.1)
+  - AFNetworking/Security (3.2.1)
+  - AFNetworking/Serialization (3.2.1)
+  - AFNetworking/UIKit (3.2.1):
+    - AFNetworking/NSURLSession
   - CWLateralSlide (1.6.3)
   - IQKeyboardManager (6.2.0)
+  - SVProgressHUD (2.2.5)
   - WRNavigationBar (1.2.0)
 
 DEPENDENCIES:
+  - AFNetworking
   - CWLateralSlide
   - IQKeyboardManager
+  - SVProgressHUD
   - WRNavigationBar
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - AFNetworking
     - CWLateralSlide
     - IQKeyboardManager
+    - SVProgressHUD
     - WRNavigationBar
 
 SPEC CHECKSUMS:
+  AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
   CWLateralSlide: 1b9a848873b93de45cfefe6389765b12aa70982c
   IQKeyboardManager: 6194101620b73af5e67900b8f89707a99de0b804
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   WRNavigationBar: dc952230effbb646785f962587caaac06c60f229
 
-PODFILE CHECKSUM: fa2980903ecc6b8c9c868c3b992a17328da69dd8
+PODFILE CHECKSUM: a11b46442185147883b32f9f6042762fa43796c5
 
 COCOAPODS: 1.6.0.beta.2
