@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LoginModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface XRHomeViewController : UIViewController
 @property (nonatomic,strong) UIViewController *vc;
+@property (nonatomic,strong) LoginModel *loginModel;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -205,11 +205,17 @@ NSString * const HQMNetworkDomain = @"http://123.207.109.93:9010/xrspip";
 
     //开启状态栏网络状态小菊花
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
-    
+    [SVProgressHUD show];
     __block NSURLSessionDataTask *dataTask = nil;
     dataTask = [_manager dataTaskWithRequest:request uploadProgress:uploadProgress downloadProgress:downloadProgress completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
         //关闭状态栏网络状态小菊花
-        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            // time-consuming task
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [SVProgressHUD dismiss];
+            });
+        });
         //AFN 返回的数据responseObject已经是字典了，不必再用NSJSONSerialization解析了
         [self handleRequestResult:dataTask response:response responseObject:responseObject error:error];
     }];
@@ -312,12 +318,12 @@ NSString * const HQMNetworkDomain = @"http://123.207.109.93:9010/xrspip";
                 
                 NSString *decString = [DES3Util AES128Decrypt:resultData];
                 NSData *stringData = [decString dataUsingEncoding:NSUTF8StringEncoding];
-                id json = [NSJSONSerialization JSONObjectWithData:stringData options:0 error:nil];
+                id retDict = [NSJSONSerialization JSONObjectWithData:stringData options:0 error:nil];
                 
                 NSInteger errorCode = [[jsonDict objectForKey:@"error"] integerValue];
                 DLog(@"jsonData:%@", jsonDict);
                 if (resultData) {
-                    [self handleData:resultData errCode:errorCode];
+                    [self handleData:retDict errCode:errorCode];
                 } else {
                     DLog(@"服务器返回数据为null");
 //                    NSAssert(NO, @"服务器返回数据为null");
@@ -466,5 +472,6 @@ NSString * const HQMNetworkDomain = @"http://123.207.109.93:9010/xrspip";
 //    // 一个任务被取消了, 会调用AFN请求的failure这个block
 //    [task cancel];
 }
+
 
 @end

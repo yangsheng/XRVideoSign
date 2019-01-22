@@ -22,6 +22,8 @@
 		1E29398221F676770026D6FC /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E29397D21F676770026D6FC /* Reachability.m */; };
 		1E29398321F676770026D6FC /* HQMBaseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E29398121F676770026D6FC /* HQMBaseRequest.m */; };
 		1E29398921F678C80026D6FC /* XRLoginRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E29398821F678C80026D6FC /* XRLoginRequest.m */; };
+		1E29398D21F693DD0026D6FC /* XRTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E29398C21F693DD0026D6FC /* XRTools.m */; };
+		1E29399121F7C59C0026D6FC /* LoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E29399021F7C59C0026D6FC /* LoginModel.m */; };
 		1E2A06CA21F29B5F00F5422C /* XRHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E2A06C821F29B5F00F5422C /* XRHomeViewController.m */; };
 		1E2A06CB21F29B5F00F5422C /* XRHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E2A06C921F29B5F00F5422C /* XRHomeViewController.xib */; };
 		1E8036A921F1FBF600F465FC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E8036A821F1FBF600F465FC /* AppDelegate.m */; };
@@ -69,6 +71,10 @@
 		1E29398421F677F80026D6FC /* CommonMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonMacro.h; sourceTree = "<group>"; };
 		1E29398721F678C80026D6FC /* XRLoginRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XRLoginRequest.h; sourceTree = "<group>"; };
 		1E29398821F678C80026D6FC /* XRLoginRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XRLoginRequest.m; sourceTree = "<group>"; };
+		1E29398B21F693DD0026D6FC /* XRTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XRTools.h; sourceTree = "<group>"; };
+		1E29398C21F693DD0026D6FC /* XRTools.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XRTools.m; sourceTree = "<group>"; };
+		1E29398F21F7C59C0026D6FC /* LoginModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginModel.h; sourceTree = "<group>"; };
+		1E29399021F7C59C0026D6FC /* LoginModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginModel.m; sourceTree = "<group>"; };
 		1E2A06C721F29B5F00F5422C /* XRHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XRHomeViewController.h; sourceTree = "<group>"; };
 		1E2A06C821F29B5F00F5422C /* XRHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XRHomeViewController.m; sourceTree = "<group>"; };
 		1E2A06C921F29B5F00F5422C /* XRHomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XRHomeViewController.xib; sourceTree = "<group>"; };
@@ -141,7 +147,7 @@
 		1E29396721F674990026D6FC /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				1E29398421F677F80026D6FC /* CommonMacro.h */,
+				1E29398A21F693C70026D6FC /* XRTools */,
 				1E29397C21F676770026D6FC /* BaseRequestAPI */,
 				1E29396821F674CF0026D6FC /* AES */,
 			);
@@ -197,6 +203,25 @@
 				1E29398821F678C80026D6FC /* XRLoginRequest.m */,
 			);
 			path = Request;
+			sourceTree = "<group>";
+		};
+		1E29398A21F693C70026D6FC /* XRTools */ = {
+			isa = PBXGroup;
+			children = (
+				1E29398421F677F80026D6FC /* CommonMacro.h */,
+				1E29398B21F693DD0026D6FC /* XRTools.h */,
+				1E29398C21F693DD0026D6FC /* XRTools.m */,
+			);
+			path = XRTools;
+			sourceTree = "<group>";
+		};
+		1E29398E21F7407B0026D6FC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1E29398F21F7C59C0026D6FC /* LoginModel.h */,
+				1E29399021F7C59C0026D6FC /* LoginModel.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		1E2A06C521F29AD300F5422C /* Home */ = {
@@ -258,6 +283,7 @@
 		1E8036BE21F1FDE200F465FC /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				1E29398E21F7407B0026D6FC /* Model */,
 				1E29398621F678930026D6FC /* Request */,
 				1E29398521F678510026D6FC /* ViewController */,
 			);
@@ -447,6 +473,7 @@
 				1E29397921F674CF0026D6FC /* DES3Util.m in Sources */,
 				1E29397721F674CF0026D6FC /* AESCrypt.m in Sources */,
 				1E8036CB21F2108200F465FC /* CDZPicker.m in Sources */,
+				1E29399121F7C59C0026D6FC /* LoginModel.m in Sources */,
 				1E29397A21F674CF0026D6FC /* NSData+CommonCrypto.m in Sources */,
 				1E29397621F674CF0026D6FC /* NSString+Base64.m in Sources */,
 				1E8036A921F1FBF600F465FC /* AppDelegate.m in Sources */,
@@ -456,6 +483,7 @@
 				1E29393021F3D3CC0026D6FC /* XRSlideViewController.m in Sources */,
 				1E29393C21F52FE50026D6FC /* XRRecordVideoViewController.m in Sources */,
 				1E2A06CA21F29B5F00F5422C /* XRHomeViewController.m in Sources */,
+				1E29398D21F693DD0026D6FC /* XRTools.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

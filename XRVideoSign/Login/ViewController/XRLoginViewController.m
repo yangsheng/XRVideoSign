@@ -47,14 +47,15 @@
 - (IBAction)loginBtnClicked:(id)sender {
     ///< 类方法
     XRLoginRequest *clazzReq = [XRLoginRequest requestWithSuccessBlock:^(NSInteger errCode, NSDictionary *responseDict, id model) {
-        DLog(@"errCode:%ld---dict:%@---model:%@", errCode, responseDict, model);
+        XRHomeViewController *homeVC = [[XRHomeViewController alloc] initWithNibName:@"XRHomeViewController" bundle:nil];
+        homeVC.vc = self;
+        homeVC.loginModel = model;
+        [self.navigationController pushViewController:homeVC animated:YES];
     } failureBlock:^(NSError *error) {
         DLog(@"error:%@", error.localizedFailureReason);
     }];
     [clazzReq startRequest];
-    XRHomeViewController *homeVC = [[XRHomeViewController alloc] initWithNibName:@"XRHomeViewController" bundle:nil];
-    homeVC.vc = self;
-    [self.navigationController pushViewController:homeVC animated:YES];
+
 }
 
 - (IBAction)selectGroupBtnClicked:(id)sender {

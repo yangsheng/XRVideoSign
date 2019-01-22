@@ -11,4 +11,7 @@ target 'XRVideoSign' do
   pod 'CWLateralSlide'
   pod 'AFNetworking'
   pod 'SVProgressHUD'
+  pod 'MJExtension'
+  pod 'Masonry'
+  
 end

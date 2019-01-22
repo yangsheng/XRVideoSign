@@ -7,7 +7,8 @@
 //
 
 #import "XRLoginRequest.h"
-#import "DES3Util.h"
+#import "LoginModel.h"
+#import "MJExtension.h"
 
 @implementation XRLoginRequest
 - (HQMRequestMethod)requestMethod {
@@ -18,41 +19,7 @@
     return @"/xrspip/api/login";
 }
 
--(NSString *)convertToJsonData:(NSDictionary *)dict{
-    
-    NSError *error;
-    
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:&error];
-    
-    NSString *jsonString;
-    
-    if (!jsonData) {
-        
-        NSLog(@"%@",error);
-        
-    }else{
-        
-        jsonString = [[NSString alloc]initWithData:jsonData encoding:NSUTF8StringEncoding];
-        
-    }
-    
-    NSMutableString *mutStr = [NSMutableString stringWithString:jsonString];
-    
-    NSRange range = {0,jsonString.length};
-    
-    //去掉字符串中的空格
-    
-    [mutStr replaceOccurrencesOfString:@" " withString:@"" options:NSLiteralSearch range:range];
-    
-    NSRange range2 = {0,mutStr.length};
-    
-    //去掉字符串中的换行符
-    
-    [mutStr replaceOccurrencesOfString:@"\n" withString:@"" options:NSLiteralSearch range:range2];
-    
-    return mutStr;
-    
-}
+
 
 
 - (NSDictionary *)requestArguments {
@@ -61,7 +28,7 @@
                           @"userpwd": @"sun"
                           };
     
-    NSString *jsonString = [self convertToJsonData:dic];
+    NSString *jsonString = [XRTools convertToJsonData:dic];
     NSString *encString = [DES3Util AES128Encrypt:jsonString];
     return @{
              @"data": encString
@@ -87,34 +54,23 @@
     NSDictionary *dict = (NSDictionary *)data;
     NSError *error = nil;
     
-//    if (errCode == 0) {
-//        NSMutableArray *friendLists = [NSMutableArray arrayWithCapacity:0];
+    if (errCode == 0) {
+        NSMutableArray *friendLists = [NSMutableArray arrayWithCapacity:0];
 //        NSArray *arr = [dict objectForKey:@"friend_list"];
 //        for (NSDictionary *temp in arr) {
 //            HQMContact *contact = [MTLJSONAdapter modelOfClass:[HQMContact class] fromJSONDictionary:temp error:&error];
 //            [friendLists addObject:contact];
 //        }
-//
-//        ///< 方式1：block 回调
-//        if (self.successBlock) {
-//            self.successBlock(errCode, dict, friendLists);
-//        }
-//
-//        ///< 方式2：代理回调
-//        if (self.delegate && [self.delegate respondsToSelector:@selector(requestDidFinishLoadingWithData:errCode:)]) {
-//            [self.delegate requestDidFinishLoadingWithData:friendLists errCode:errCode];
-//        }
-//    }
-//    else {
-//        ///< block 回调
-//        if (self.successBlock) {
-//            self.successBlock(errCode, dict, nil);
-//        }
-//
-//        ///< 代理回调
-//        if (self.delegate && [self.delegate respondsToSelector:@selector(requestDidFinishLoadingWithData:errCode:)]) {
-//            [self.delegate requestDidFinishLoadingWithData:data errCode:errCode];
-//        }
-//    }
+        LoginModel *model = [LoginModel mj_objectWithKeyValues:[[dict objectForKey:@"obj"] objectAtIndex:1]];
+        if (self.successBlock) {
+            self.successBlock(errCode, dict, model);
+        }
+
+    }
+    else {
+        if (self.successBlock) {
+            self.successBlock(errCode, dict, nil);
+        }
+    }
 }
 @end

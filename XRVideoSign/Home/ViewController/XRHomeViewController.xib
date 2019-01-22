@@ -22,7 +22,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yeo-nY-ekk">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="587"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="RG2-H9-0cT"/>
@@ -30,10 +30,10 @@
                     </connections>
                 </tableView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yxh-St-4az">
-                    <rect key="frame" x="37" y="607" width="301" height="47"/>
+                    <rect key="frame" x="37" y="614" width="301" height="40"/>
                     <color key="backgroundColor" red="0.28931427001953125" green="0.34508135914802551" blue="0.52762264013290405" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="47" id="D35-Lw-ZD6"/>
+                        <constraint firstAttribute="height" constant="40" id="HLx-Fy-arw"/>
                     </constraints>
                     <state key="normal" title="开始面签">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -45,13 +45,13 @@
             </subviews>
             <color key="backgroundColor" red="0.9646109938621521" green="0.96477228403091431" blue="0.96458977460861206" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="yeo-nY-ekk" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="1Lh-87-D3Z"/>
-                <constraint firstItem="yeo-nY-ekk" firstAttribute="trailing" secondItem="Q5M-cg-NOt" secondAttribute="trailing" id="CXP-2q-TD0"/>
-                <constraint firstItem="yeo-nY-ekk" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="TYm-K5-Zrq"/>
-                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="yeo-nY-ekk" secondAttribute="bottom" constant="80" id="XAZ-OY-yR7"/>
-                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="Yxh-St-4az" secondAttribute="trailing" constant="37" id="cdZ-dk-mPR"/>
-                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="Yxh-St-4az" secondAttribute="bottom" constant="13" id="pHO-gm-IdO"/>
-                <constraint firstItem="Yxh-St-4az" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="37" id="rPd-gw-1kd"/>
+                <constraint firstItem="yeo-nY-ekk" firstAttribute="trailing" secondItem="Q5M-cg-NOt" secondAttribute="trailing" id="5Pw-XM-qIG"/>
+                <constraint firstItem="yeo-nY-ekk" firstAttribute="bottom" secondItem="Q5M-cg-NOt" secondAttribute="bottom" id="GrM-OJ-EnI"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="Yxh-St-4az" secondAttribute="trailing" constant="37" id="RSe-WI-7Er"/>
+                <constraint firstItem="yeo-nY-ekk" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="WLk-NI-GaX"/>
+                <constraint firstItem="yeo-nY-ekk" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="ZMv-3A-Dkw"/>
+                <constraint firstItem="Yxh-St-4az" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="37" id="gT4-CU-UQO"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="Yxh-St-4az" secondAttribute="bottom" constant="13" id="zRL-oB-etD"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
             <point key="canvasLocation" x="132" y="154.27286356821591"/>

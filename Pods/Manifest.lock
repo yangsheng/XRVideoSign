@@ -16,6 +16,8 @@ PODS:
     - AFNetworking/NSURLSession
   - CWLateralSlide (1.6.3)
   - IQKeyboardManager (6.2.0)
+  - Masonry (1.1.0)
+  - MJExtension (3.0.15.1)
   - SVProgressHUD (2.2.5)
   - WRNavigationBar (1.2.0)
 
@@ -23,6 +25,8 @@ DEPENDENCIES:
   - AFNetworking
   - CWLateralSlide
   - IQKeyboardManager
+  - Masonry
+  - MJExtension
   - SVProgressHUD
   - WRNavigationBar
 
@@ -31,6 +35,8 @@ SPEC REPOS:
     - AFNetworking
     - CWLateralSlide
     - IQKeyboardManager
+    - Masonry
+    - MJExtension
     - SVProgressHUD
     - WRNavigationBar
 
@@ -38,9 +44,11 @@ SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
   CWLateralSlide: 1b9a848873b93de45cfefe6389765b12aa70982c
   IQKeyboardManager: 6194101620b73af5e67900b8f89707a99de0b804
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  MJExtension: 19bc33ce2eee2d319760f5622562cf581a6ff756
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   WRNavigationBar: dc952230effbb646785f962587caaac06c60f229
 
-PODFILE CHECKSUM: a11b46442185147883b32f9f6042762fa43796c5
+PODFILE CHECKSUM: c9f3f54cc169c2f8d058abb3318ac2cefef3115f
 
 COCOAPODS: 1.6.0.beta.2
