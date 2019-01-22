@@ -13,6 +13,7 @@
 #import "XRLoginViewController.h"
 #import "ListTableViewCell.h"
 #import "XRRecordVideoViewController.h"
+#import "XRReportRequest.h"
 
 @interface XRHomeViewController ()
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
@@ -20,12 +21,21 @@
 
 @implementation XRHomeViewController
 
+- (void)loadData{
+    ///< 类方法
+    XRReportRequest *clazzReq = [XRReportRequest requestWithSuccessBlock:^(NSInteger errCode, NSDictionary *responseDict, id model) {
+
+    } failureBlock:^(NSError *error) {
+        DLog(@"error:%@", error.localizedFailureReason);
+    }];
+    [clazzReq startRequest];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.title = @"待面签报表";
     [self setupNav];
-    
+    [self loadData];
     //获取通知中心单例对象
     NSNotificationCenter * center = [NSNotificationCenter defaultCenter];
     //添加当前类对象为一个观察者，name和object设置为nil，表示接收一切通知

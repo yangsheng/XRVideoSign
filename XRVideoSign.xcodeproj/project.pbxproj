@@ -24,6 +24,7 @@
 		1E29398921F678C80026D6FC /* XRLoginRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E29398821F678C80026D6FC /* XRLoginRequest.m */; };
 		1E29398D21F693DD0026D6FC /* XRTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E29398C21F693DD0026D6FC /* XRTools.m */; };
 		1E29399121F7C59C0026D6FC /* LoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E29399021F7C59C0026D6FC /* LoginModel.m */; };
+		1E29399921F7D3190026D6FC /* XRReportRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E29399821F7D3190026D6FC /* XRReportRequest.m */; };
 		1E2A06CA21F29B5F00F5422C /* XRHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E2A06C821F29B5F00F5422C /* XRHomeViewController.m */; };
 		1E2A06CB21F29B5F00F5422C /* XRHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E2A06C921F29B5F00F5422C /* XRHomeViewController.xib */; };
 		1E8036A921F1FBF600F465FC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E8036A821F1FBF600F465FC /* AppDelegate.m */; };
@@ -75,6 +76,8 @@
 		1E29398C21F693DD0026D6FC /* XRTools.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XRTools.m; sourceTree = "<group>"; };
 		1E29398F21F7C59C0026D6FC /* LoginModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginModel.h; sourceTree = "<group>"; };
 		1E29399021F7C59C0026D6FC /* LoginModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginModel.m; sourceTree = "<group>"; };
+		1E29399721F7D3190026D6FC /* XRReportRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XRReportRequest.h; sourceTree = "<group>"; };
+		1E29399821F7D3190026D6FC /* XRReportRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XRReportRequest.m; sourceTree = "<group>"; };
 		1E2A06C721F29B5F00F5422C /* XRHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XRHomeViewController.h; sourceTree = "<group>"; };
 		1E2A06C821F29B5F00F5422C /* XRHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XRHomeViewController.m; sourceTree = "<group>"; };
 		1E2A06C921F29B5F00F5422C /* XRHomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XRHomeViewController.xib; sourceTree = "<group>"; };
@@ -224,9 +227,19 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		1E29399621F7D2CD0026D6FC /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				1E29399721F7D3190026D6FC /* XRReportRequest.h */,
+				1E29399821F7D3190026D6FC /* XRReportRequest.m */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
 		1E2A06C521F29AD300F5422C /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				1E29399621F7D2CD0026D6FC /* Request */,
 				1E29393321F3F2150026D6FC /* View */,
 				1E29393221F3F2030026D6FC /* ViewController */,
 			);
@@ -484,6 +497,7 @@
 				1E29393C21F52FE50026D6FC /* XRRecordVideoViewController.m in Sources */,
 				1E2A06CA21F29B5F00F5422C /* XRHomeViewController.m in Sources */,
 				1E29398D21F693DD0026D6FC /* XRTools.m in Sources */,
+				1E29399921F7D3190026D6FC /* XRReportRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
