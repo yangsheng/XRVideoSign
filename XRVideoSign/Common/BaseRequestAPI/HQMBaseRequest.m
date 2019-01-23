@@ -317,8 +317,10 @@ NSString * const HQMNetworkDomain = @"http://123.207.109.93:9010/xrspip";
                 id resultData = [jsonDict objectForKey:@"data"];
                 
                 NSString *decString = [DES3Util AES128Decrypt:resultData];
+                decString =[decString stringByTrimmingCharactersInSet:[NSCharacterSet controlCharacterSet]];
                 NSData *stringData = [decString dataUsingEncoding:NSUTF8StringEncoding];
-                id retDict = [NSJSONSerialization JSONObjectWithData:stringData options:0 error:nil];
+                NSError *error;
+                id retDict = [NSJSONSerialization JSONObjectWithData:stringData options:0 error:&error];
                 
                 NSInteger errorCode = [[jsonDict objectForKey:@"error"] integerValue];
                 DLog(@"jsonData:%@", jsonDict);

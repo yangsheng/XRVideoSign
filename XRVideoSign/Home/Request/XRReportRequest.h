@@ -7,11 +7,12 @@
 //
 
 #import "HQMBaseRequest.h"
+#import "LoginModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface XRReportRequest : HQMBaseRequest
-
+@property (nonatomic,strong) LoginModel *loginModel;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -17,17 +17,21 @@
 
 @interface XRHomeViewController ()
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) NSMutableArray *dataList;
 @end
 
 @implementation XRHomeViewController
 
 - (void)loadData{
     ///< 类方法
+    
     XRReportRequest *clazzReq = [XRReportRequest requestWithSuccessBlock:^(NSInteger errCode, NSDictionary *responseDict, id model) {
-
+        self.dataList = [[responseDict objectForKey:@"obj"] objectAtIndex:0];
+        [self.tableView reloadData];
     } failureBlock:^(NSError *error) {
         DLog(@"error:%@", error.localizedFailureReason);
     }];
+    clazzReq.loginModel = self.loginModel;
     [clazzReq startRequest];
 }
 - (void)viewDidLoad {
@@ -117,12 +121,23 @@
 #pragma mark - tableview delegate / dataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
+    return [self.dataList count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ListTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"ListTableViewCell"];
+    NSDictionary *dic = [self.dataList objectAtIndex:indexPath.row];
+    NSString *strNo = [NSString stringWithFormat:@"  合同号:  %@",[dic objectForKey:@"fNO"]];
+    [cell.noBtn setTitle:strNo forState:UIControlStateNormal];
+    
+    cell.mainLabel.text = [dic objectForKey:@"主机厂"];
+    cell.dealerLabel.text = [dic objectForKey:@"经销商"];
+    cell.CustomerTypeLabel.text = [[dic objectForKey:@"客户类型"] length]>0?[dic objectForKey:@"客户类型"]:@" ";
+    cell.methodLabel.text = [[dic objectForKey:@"租赁方式"] length]>0?[dic objectForKey:@"租赁方式"]:@" ";
+    cell.nameLabel.text = [dic objectForKey:@"合作伙伴"]?[dic objectForKey:@"合作伙伴"]:@"";
+    cell.moneyLabel.text = [NSString stringWithFormat:@"%ld", [[dic objectForKey:@"融资金额"] integerValue]];
+    cell.expiredLabel.text = [NSString stringWithFormat:@"%ld",[[dic objectForKey:@"租赁期限"] integerValue]];
     return cell;
 }
 

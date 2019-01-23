@@ -11,7 +11,14 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ListTableViewCell : UITableViewCell
-
+@property (nonatomic,strong) IBOutlet UIButton *noBtn;
+@property (nonatomic,strong) IBOutlet UILabel *mainLabel;
+@property (nonatomic,strong) IBOutlet UILabel *dealerLabel;
+@property (nonatomic,strong) IBOutlet UILabel *CustomerTypeLabel;
+@property (nonatomic,strong) IBOutlet UILabel *methodLabel;
+@property (nonatomic,strong) IBOutlet UILabel *nameLabel;
+@property (nonatomic,strong) IBOutlet UILabel *moneyLabel;
+@property (nonatomic,strong) IBOutlet UILabel *expiredLabel;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -37,7 +37,7 @@
                                  @"@sNO@": @"",
                                  @"@sName@":@"",
                                  @"@ASD_MachineCompany@":@"",
-                                 @"@ShowD@":@"",
+                                 @"@ShowD@":@"1",
                                  @"@MachineDeptID@":@"",
                                  @"@RZ_DealerName@":@""
                                  };
@@ -69,11 +69,11 @@
 ///< 配置请求头，根据需求决定是否重写
 - (NSDictionary<NSString *,NSString *> *)requestHeaderFieldValueDictionary {
     return @{
-             @"XR-ID": @"0",
-             @"XR-TOKEN": @"",
+             @"XR-ID": self.loginModel.id,
+             @"XR-TOKEN": self.loginModel.token,
              @"XR-SYSTEMKEY": @"APP_NATIVE_V1",
              @"XR-USERCLASS": @"NEIBU",
-             @"XR-ACCOUNTID": @"0"
+             @"XR-ACCOUNTID": self.loginModel.accountid
              };
     
     //    return nil;
@@ -87,7 +87,7 @@
 
        
         if (self.successBlock) {
-  //          self.successBlock(errCode, dict, model);
+            self.successBlock(errCode, dict, nil);
         }
         
     }

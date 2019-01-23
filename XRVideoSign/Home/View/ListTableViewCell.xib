@@ -158,6 +158,16 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <connections>
+                <outlet property="CustomerTypeLabel" destination="f3w-4g-uwN" id="wSt-aK-6FE"/>
+                <outlet property="dealerLabel" destination="ojj-Ue-xBS" id="hrt-YL-fbI"/>
+                <outlet property="expiredLabel" destination="wok-LG-kcE" id="KI9-CG-b9d"/>
+                <outlet property="mainLabel" destination="V2D-u8-RgO" id="2KU-FI-teb"/>
+                <outlet property="methodLabel" destination="kP3-vY-EY2" id="ypo-ug-NyQ"/>
+                <outlet property="moneyLabel" destination="8z8-pT-tif" id="1hX-KZ-oy0"/>
+                <outlet property="nameLabel" destination="zXR-l6-DwG" id="zti-rd-GU6"/>
+                <outlet property="noBtn" destination="3qw-OL-Cpk" id="JlC-c2-cg2"/>
+            </connections>
             <point key="canvasLocation" x="132.80000000000001" y="247.82608695652175"/>
         </tableViewCell>
     </objects>
