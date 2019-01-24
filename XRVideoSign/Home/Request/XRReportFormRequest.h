@@ -1,8 +1,8 @@
 //
-//  XRReportRequest.h
+//  XRReportFormRequest.h
 //  XRVideoSign
 //
-//  Created by zhu yangsheng on 1/23/19.
+//  Created by zhu yangsheng on 1/24/19.
 //  Copyright © 2019 xrinfo. All rights reserved.
 //
 
@@ -11,10 +11,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface XRReportRequest : HQMBaseRequest
+@interface XRReportFormRequest : HQMBaseRequest
 @property (nonatomic,strong) LoginModel *loginModel;
-@property (nonatomic, assign) int current_index;
-@property (nonatomic, strong) NSMutableDictionary *filters;
 @end
 
 NS_ASSUME_NONNULL_END

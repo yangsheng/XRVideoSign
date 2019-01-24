@@ -14,15 +14,36 @@
 #import "ListTableViewCell.h"
 #import "XRRecordVideoViewController.h"
 #import "XRReportRequest.h"
+#import "XRReportFormRequest.h"
+#import "XRRelationListRequest.h"
+#import "XRRelationRequest.h"
 #import "MJRefresh.h"
 
 @interface XRHomeViewController ()
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *dataList;
+@property (nonatomic, strong) NSMutableDictionary *filters;
 @property (nonatomic, assign) int current_index;
 @end
 
 @implementation XRHomeViewController
+
+- (void)loadFormData{
+    XRReportFormRequest *clazzReq = [XRReportFormRequest requestWithSuccessBlock:^(NSInteger errCode, NSDictionary *responseDict, id model) {
+        NSLog(@"");
+        self.filters = [[NSMutableDictionary alloc] init];
+        NSArray *ar = [[[responseDict objectForKey:@"obj"] objectAtIndex:0] objectForKey:@"filters"];
+        for (NSDictionary *dic in ar) {
+            [self.filters setObject:[dic objectForKey:@"defaultvalue"] forKey:[dic objectForKey:@"no"]];
+        }
+        [self loadData:YES];
+    } failureBlock:^(NSError *error) {
+        DLog(@"error:%@", error.localizedFailureReason);
+    }];
+    
+    clazzReq.loginModel = self.loginModel;
+    [clazzReq startRequest];
+}
 
 - (void)loadData:(BOOL)bFirst{
     XRReportRequest *clazzReq = [XRReportRequest requestWithSuccessBlock:^(NSInteger errCode, NSDictionary *responseDict, id model) {
@@ -47,7 +68,8 @@
     }else{
        ++self.current_index;
     }
-
+    
+    clazzReq.filters = self.filters;
     clazzReq.loginModel = self.loginModel;
     clazzReq.current_index = self.current_index;
     [clazzReq startRequest];
@@ -57,7 +79,8 @@
     // Do any additional setup after loading the view from its nib.
     self.title = @"待面签报表";
     [self setupNav];
-    [self loadData:YES];
+    [self loadFormData];
+
     //获取通知中心单例对象
     NSNotificationCenter * center = [NSNotificationCenter defaultCenter];
     //添加当前类对象为一个观察者，name和object设置为nil，表示接收一切通知
@@ -137,10 +160,31 @@
 
 }
 - (IBAction)recordBtnClicked:(id)sender {
-    XRRecordVideoViewController *recordVC = [[XRRecordVideoViewController alloc] initWithNibName:@"XRRecordVideoViewController" bundle:nil];
-    [self.navigationController pushViewController:recordVC animated:YES];
+//    XRRecordVideoViewController *recordVC = [[XRRecordVideoViewController alloc] initWithNibName:@"XRRecordVideoViewController" bundle:nil];
+//    [self.navigationController pushViewController:recordVC animated:YES];
+    XRRelationListRequest *clazzReq = [XRRelationListRequest requestWithSuccessBlock:^(NSInteger errCode, NSDictionary *responseDict, id model) {
+        NSLog(@"");
+        [self loadRelationData];
+    } failureBlock:^(NSError *error) {
+        DLog(@"error:%@", error.localizedFailureReason);
+    }];
+    
+    clazzReq.loginModel = self.loginModel;
+    clazzReq.dataDict = [self.dataList objectAtIndex:0];
+    [clazzReq startRequest];
 }
 
+- (void)loadRelationData{
+    XRRelationRequest *clazzReq = [XRRelationRequest requestWithSuccessBlock:^(NSInteger errCode, NSDictionary *responseDict, id model) {
+        NSLog(@"");
+    } failureBlock:^(NSError *error) {
+        DLog(@"error:%@", error.localizedFailureReason);
+    }];
+    
+    clazzReq.loginModel = self.loginModel;
+    clazzReq.dataDict = [self.dataList objectAtIndex:0];
+    [clazzReq startRequest];
+}
 #pragma mark - tableview delegate / dataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -159,7 +203,7 @@
     cell.dealerLabel.text = [dic objectForKey:@"经销商"];
     cell.CustomerTypeLabel.text = [[dic objectForKey:@"客户类型"] length]>0?[dic objectForKey:@"客户类型"]:@" ";
     cell.methodLabel.text = [[dic objectForKey:@"租赁方式"] length]>0?[dic objectForKey:@"租赁方式"]:@" ";
-    cell.nameLabel.text = [dic objectForKey:@"合作伙伴"]?[dic objectForKey:@"合作伙伴"]:@"";
+    cell.nameLabel.text = [dic objectForKey:@"fName"]?[dic objectForKey:@"fName"]:@"";
     cell.moneyLabel.text = [NSString stringWithFormat:@"%ld", [[dic objectForKey:@"融资金额"] integerValue]];
     cell.expiredLabel.text = [NSString stringWithFormat:@"%ld",[[dic objectForKey:@"租赁期限"] integerValue]];
     return cell;

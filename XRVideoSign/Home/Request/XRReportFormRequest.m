@@ -1,29 +1,26 @@
 //
-//  XRReportRequest.m
+//  XRReportFormRequest.m
 //  XRVideoSign
 //
-//  Created by zhu yangsheng on 1/23/19.
+//  Created by zhu yangsheng on 1/24/19.
 //  Copyright © 2019 xrinfo. All rights reserved.
 //
 
-#import "XRReportRequest.h"
-#import "LoginModel.h"
-#import "MJExtension.h"
+#import "XRReportFormRequest.h"
 
-@implementation XRReportRequest
+@implementation XRReportFormRequest
 - (HQMRequestMethod)requestMethod {
     return HQMRequestMethodPOST;
 }
 
 - (NSString *)requestURLPath {
-    return @"/xrspip/api/reportdata";
+    return @"/xrspip/api/reportform";
 }
 
 
 
 
 - (NSDictionary *)requestArguments {
-    NSString *currentPage  = [NSString stringWithFormat:@"%d",self.current_index];
     NSDictionary *utilObj = @{
                               @"sysmoduleid": @"mui_REP_ASD_spVideoGetContract",
                               @"objectclassid": @"1",
@@ -33,30 +30,23 @@
                               @"relationid":@"0"
                               };
     
-//    NSDictionary *filter = @{
-//                                 @"@ShowC@": @"0",
-//                                 @"@sNO@": @"",
-//                                 @"@sName@":@"",
-//                                 @"@ASD_MachineCompany@":@"",
-//                                 @"@ShowD@":@"1",
-//                                 @"@MachineDeptID@":@"",
-//                                 @"@RZ_DealerName@":@""
-//                                 };
-    
-    NSDictionary *utilPage = @{
-                             @"currentPage": currentPage,
-                             @"pageSize": @"20"
+    NSDictionary *filter = @{
                              };
     
+    NSDictionary *utilPage = @{
+                               @"currentPage": @"1",
+                               @"pageSize": @"1000"
+                               };
+    
     NSDictionary *dataFilter = @{
-                              @"utilPage": utilPage,
-                              @"filter": self.filters
-                              };
+                                 @"utilPage": utilPage,
+                                 @"filter": filter
+                                 };
     
     NSDictionary *dic = @{
-                                 @"utilObj": utilObj,
-                                 @"dataFilter": dataFilter
-                                 };
+                          @"utilObj": utilObj,
+                          @"dataFilter": dataFilter
+                          };
     
     NSString *jsonString = [XRTools convertToJsonData:dic];
     NSString *encString = [DES3Util AES128Encrypt:jsonString];
@@ -85,8 +75,8 @@
     NSError *error = nil;
     
     if (errCode == 0) {
-
-       
+        
+        
         if (self.successBlock) {
             self.successBlock(errCode, dict, nil);
         }

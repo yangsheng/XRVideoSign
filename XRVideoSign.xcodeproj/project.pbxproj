@@ -29,6 +29,9 @@
 		1E2939A021F980630026D6FC /* company.index in Resources */ = {isa = PBXBuildFile; fileRef = 1E29399F21F980630026D6FC /* company.index */; };
 		1E2939A621F982810026D6FC /* CCNetworkHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E2939A421F982810026D6FC /* CCNetworkHelper.m */; };
 		1E2939A721F982810026D6FC /* CCNetworkCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E2939A521F982810026D6FC /* CCNetworkCache.m */; };
+		1E2939AA21F998B70026D6FC /* XRReportFormRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E2939A921F998B70026D6FC /* XRReportFormRequest.m */; };
+		1E2939AD21F9A4C70026D6FC /* XRRelationListRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E2939AC21F9A4C70026D6FC /* XRRelationListRequest.m */; };
+		1E2939B021F9B9080026D6FC /* XRRelationRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E2939AF21F9B9080026D6FC /* XRRelationRequest.m */; };
 		1E2A06CA21F29B5F00F5422C /* XRHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E2A06C821F29B5F00F5422C /* XRHomeViewController.m */; };
 		1E2A06CB21F29B5F00F5422C /* XRHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E2A06C921F29B5F00F5422C /* XRHomeViewController.xib */; };
 		1E8036A921F1FBF600F465FC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E8036A821F1FBF600F465FC /* AppDelegate.m */; };
@@ -89,6 +92,12 @@
 		1E2939A321F982810026D6FC /* CCNetworkCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCNetworkCache.h; sourceTree = "<group>"; };
 		1E2939A421F982810026D6FC /* CCNetworkHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCNetworkHelper.m; sourceTree = "<group>"; };
 		1E2939A521F982810026D6FC /* CCNetworkCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCNetworkCache.m; sourceTree = "<group>"; };
+		1E2939A821F998B70026D6FC /* XRReportFormRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XRReportFormRequest.h; sourceTree = "<group>"; };
+		1E2939A921F998B70026D6FC /* XRReportFormRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XRReportFormRequest.m; sourceTree = "<group>"; };
+		1E2939AB21F9A4C70026D6FC /* XRRelationListRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XRRelationListRequest.h; sourceTree = "<group>"; };
+		1E2939AC21F9A4C70026D6FC /* XRRelationListRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XRRelationListRequest.m; sourceTree = "<group>"; };
+		1E2939AE21F9B9080026D6FC /* XRRelationRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XRRelationRequest.h; sourceTree = "<group>"; };
+		1E2939AF21F9B9080026D6FC /* XRRelationRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XRRelationRequest.m; sourceTree = "<group>"; };
 		1E2A06C721F29B5F00F5422C /* XRHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XRHomeViewController.h; sourceTree = "<group>"; };
 		1E2A06C821F29B5F00F5422C /* XRHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XRHomeViewController.m; sourceTree = "<group>"; };
 		1E2A06C921F29B5F00F5422C /* XRHomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XRHomeViewController.xib; sourceTree = "<group>"; };
@@ -245,6 +254,12 @@
 			children = (
 				1E29399721F7D3190026D6FC /* XRReportRequest.h */,
 				1E29399821F7D3190026D6FC /* XRReportRequest.m */,
+				1E2939A821F998B70026D6FC /* XRReportFormRequest.h */,
+				1E2939A921F998B70026D6FC /* XRReportFormRequest.m */,
+				1E2939AB21F9A4C70026D6FC /* XRRelationListRequest.h */,
+				1E2939AC21F9A4C70026D6FC /* XRRelationListRequest.m */,
+				1E2939AE21F9B9080026D6FC /* XRRelationRequest.h */,
+				1E2939AF21F9B9080026D6FC /* XRRelationRequest.m */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -524,6 +539,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1E8036CD21F2108200F465FC /* CDZContentView.m in Sources */,
+				1E2939AD21F9A4C70026D6FC /* XRRelationListRequest.m in Sources */,
 				1E29399D21F8E88E0026D6FC /* ReportModel.m in Sources */,
 				1E8036C221F1FE1A00F465FC /* XRLoginViewController.m in Sources */,
 				1E29397B21F674CF0026D6FC /* NSData+Base64.m in Sources */,
@@ -532,9 +548,11 @@
 				1E29398921F678C80026D6FC /* XRLoginRequest.m in Sources */,
 				1E29397921F674CF0026D6FC /* DES3Util.m in Sources */,
 				1E29397721F674CF0026D6FC /* AESCrypt.m in Sources */,
+				1E2939B021F9B9080026D6FC /* XRRelationRequest.m in Sources */,
 				1E8036CB21F2108200F465FC /* CDZPicker.m in Sources */,
 				1E29399121F7C59C0026D6FC /* LoginModel.m in Sources */,
 				1E29397A21F674CF0026D6FC /* NSData+CommonCrypto.m in Sources */,
+				1E2939AA21F998B70026D6FC /* XRReportFormRequest.m in Sources */,
 				1E29397621F674CF0026D6FC /* NSString+Base64.m in Sources */,
 				1E8036A921F1FBF600F465FC /* AppDelegate.m in Sources */,
 				1E29398221F676770026D6FC /* Reachability.m in Sources */,
