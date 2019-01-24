@@ -18,15 +18,20 @@
 }
 
 - (NSDictionary *)requestArguments {
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+//    [userDefault setObject:strObjectid forKey:@"Objectid"];
+//    [userDefault setObject:strDataid forKey:@"Dataid"];
+//    [userDefault setObject:strAdjunctclassid forKey:@"Adjunctclassid"];
+//    [userDefault synchronize];
     NSDictionary *dicValue = @{
                                @"kindid":@"0",
                                @"longitude":@"0",
                                @"latitude":@"0",
                                @"gpskind":@"",
-                               @"issave":@"false",
-                               @"objectid":@"1522",
-                               @"dataid":@"1208",
-                               @"adjunctclassid":@"1252"
+                               @"issave":@"0",
+                               @"objectid":[userDefault objectForKey:@"Objectid"],
+                               @"dataid":[userDefault objectForKey:@"Dataid"],
+                               @"adjunctclassid":[userDefault objectForKey:@"Adjunctclassid"]
                                };
     NSData *data = [NSJSONSerialization dataWithJSONObject:dicValue
                                                    options:NSJSONReadingMutableLeaves | NSJSONReadingAllowFragments

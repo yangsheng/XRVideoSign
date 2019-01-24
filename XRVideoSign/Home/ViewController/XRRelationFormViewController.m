@@ -25,12 +25,16 @@
          "adjunctclassid":Math.abs(adjunctClasss.get(0).get("id"))// 取第一个附件分类的绝对值
          */
         NSInteger nObjectid = [[[[responseDict objectForKey:@"obj"] objectAtIndex:0] objectForKey:@"objectid"] integerValue];
-        
+        NSString *strObjectid = [NSString stringWithFormat:@"%ld",nObjectid];
      
-        NSInteger nDataid = [[[[[[responseDict objectForKey:@"obj"] objectAtIndex:4] objectForKey:@"objectdata"] objectForKey:@"datas"] objectForKey:@"fID"] integerValue];
+        NSString *strDataid = [[[[[[responseDict objectForKey:@"obj"] objectAtIndex:4] objectForKey:@"objectData"] objectForKey:@"datas"] objectAtIndex:0] objectForKey:@"fID"] ;
         
-        NSInteger nAdjunctclassid = [[[[responseDict objectForKey:@"obj"] objectAtIndex:0] objectForKey:@"objectid"] integerValue];
+        NSString *strAdjunctclassid = [[[[responseDict objectForKey:@"obj"] objectAtIndex:1] objectAtIndex:0] objectForKey:@"no"] ;
         NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+        [userDefault setObject:strObjectid forKey:@"Objectid"];
+        [userDefault setObject:strDataid forKey:@"Dataid"];
+        [userDefault setObject:strAdjunctclassid forKey:@"Adjunctclassid"];
+        [userDefault synchronize];
         NSLog(@"");
     } failureBlock:^(NSError *error) {
         DLog(@"error:%@", error.localizedFailureReason);
