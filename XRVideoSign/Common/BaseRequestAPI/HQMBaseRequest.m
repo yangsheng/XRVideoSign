@@ -10,11 +10,7 @@
 #import "Reachability.h"
 #import "DES3Util.h"
 
-#if __has_include(<AFNetworking/AFNetworking.h>)
-    #import <AFNetworking/AFNetworking.h>
-#else
-    #import "AFNetworking.h"
-#endif
+
 
 ///< SSL证书名称，仅支持cer格式。本 Demo 没有导入HTTPS证书，如果有需要请导入自己的，HTTPS 证书验证的代码是正确的
 #define kCertificateName @"httpsServerAuth"

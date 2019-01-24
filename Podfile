@@ -14,4 +14,5 @@ target 'XRVideoSign' do
   pod 'MJExtension'
   pod 'Masonry'
   pod 'MJRefresh'
+  pod 'YYCache'
 end

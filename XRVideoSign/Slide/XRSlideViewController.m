@@ -37,5 +37,12 @@
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+//
+- (IBAction)aboutBtnClicked:(id)sender {
 
+}
+//
+- (IBAction)feedBackBtnClicked:(id)sender {
+    
+}
 @end
