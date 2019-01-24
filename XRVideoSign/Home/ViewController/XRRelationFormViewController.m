@@ -19,6 +19,18 @@
 
 - (void)loadRelationData{
     XRRelationRequest *clazzReq = [XRRelationRequest requestWithSuccessBlock:^(NSInteger errCode, NSDictionary *responseDict, id model) {
+        /*
+         "objectid":dataObject.getInt("objectid"),
+         "dataid":mainData.get("fID"),// 主表数据中的fID
+         "adjunctclassid":Math.abs(adjunctClasss.get(0).get("id"))// 取第一个附件分类的绝对值
+         */
+        NSInteger nObjectid = [[[[responseDict objectForKey:@"obj"] objectAtIndex:0] objectForKey:@"objectid"] integerValue];
+        
+     
+        NSInteger nDataid = [[[[[[responseDict objectForKey:@"obj"] objectAtIndex:4] objectForKey:@"objectdata"] objectForKey:@"datas"] objectForKey:@"fID"] integerValue];
+        
+        NSInteger nAdjunctclassid = [[[[responseDict objectForKey:@"obj"] objectAtIndex:0] objectForKey:@"objectid"] integerValue];
+        NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
         NSLog(@"");
     } failureBlock:^(NSError *error) {
         DLog(@"error:%@", error.localizedFailureReason);

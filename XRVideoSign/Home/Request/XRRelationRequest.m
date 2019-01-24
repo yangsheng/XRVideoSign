@@ -26,7 +26,7 @@
                               @"relationid":@"1112",
                               @"relationoperid":@"11",
                               @"relationdataid":@"2004",
-                              @"relationidkeyvalues":@"2004,2015,"
+                              @"relationidkeyvalues":@"2004,"
                               };
     NSDictionary *data = @{
                               };

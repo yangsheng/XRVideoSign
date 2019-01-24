@@ -39,6 +39,7 @@
 		1E2939C021F9C5820026D6FC /* XRLiveVideoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E2939BE21F9C5820026D6FC /* XRLiveVideoViewController.xib */; };
 		1E2939C321F9DC270026D6FC /* uploadLiveFaceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E2939C221F9DC270026D6FC /* uploadLiveFaceRequest.m */; };
 		1E2939C521F9DEF90026D6FC /* 123.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 1E2939C421F9DEF90026D6FC /* 123.mp4 */; };
+		1E2939C821F9E9D60026D6FC /* uploadVideoRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E2939C721F9E9D60026D6FC /* uploadVideoRequest.m */; };
 		1E2A06CA21F29B5F00F5422C /* XRHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E2A06C821F29B5F00F5422C /* XRHomeViewController.m */; };
 		1E2A06CB21F29B5F00F5422C /* XRHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E2A06C921F29B5F00F5422C /* XRHomeViewController.xib */; };
 		1E8036A921F1FBF600F465FC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E8036A821F1FBF600F465FC /* AppDelegate.m */; };
@@ -116,6 +117,8 @@
 		1E2939C121F9DC270026D6FC /* uploadLiveFaceRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = uploadLiveFaceRequest.h; sourceTree = "<group>"; };
 		1E2939C221F9DC270026D6FC /* uploadLiveFaceRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = uploadLiveFaceRequest.m; sourceTree = "<group>"; };
 		1E2939C421F9DEF90026D6FC /* 123.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = 123.mp4; sourceTree = "<group>"; };
+		1E2939C621F9E9D60026D6FC /* uploadVideoRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = uploadVideoRequest.h; sourceTree = "<group>"; };
+		1E2939C721F9E9D60026D6FC /* uploadVideoRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = uploadVideoRequest.m; sourceTree = "<group>"; };
 		1E2A06C721F29B5F00F5422C /* XRHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XRHomeViewController.h; sourceTree = "<group>"; };
 		1E2A06C821F29B5F00F5422C /* XRHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XRHomeViewController.m; sourceTree = "<group>"; };
 		1E2A06C921F29B5F00F5422C /* XRHomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XRHomeViewController.xib; sourceTree = "<group>"; };
@@ -288,6 +291,8 @@
 				1E2939BA21F9C26B0026D6FC /* XRFaceLiveFourRequest.m */,
 				1E2939C121F9DC270026D6FC /* uploadLiveFaceRequest.h */,
 				1E2939C221F9DC270026D6FC /* uploadLiveFaceRequest.m */,
+				1E2939C621F9E9D60026D6FC /* uploadVideoRequest.h */,
+				1E2939C721F9E9D60026D6FC /* uploadVideoRequest.m */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -590,6 +595,7 @@
 				1E2939AA21F998B70026D6FC /* XRReportFormRequest.m in Sources */,
 				1E29397621F674CF0026D6FC /* NSString+Base64.m in Sources */,
 				1E2939B421F9BE580026D6FC /* XRRelationFormViewController.m in Sources */,
+				1E2939C821F9E9D60026D6FC /* uploadVideoRequest.m in Sources */,
 				1E8036A921F1FBF600F465FC /* AppDelegate.m in Sources */,
 				1E29398221F676770026D6FC /* Reachability.m in Sources */,
 				1E2939A721F982810026D6FC /* CCNetworkCache.m in Sources */,

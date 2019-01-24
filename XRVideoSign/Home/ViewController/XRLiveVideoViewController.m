@@ -10,6 +10,8 @@
 #import "XRFaceLiveFourRequest.h"
 #import "CCNetworkHelper.h"
 #import "uploadLiveFaceRequest.h"
+#import "uploadVideoRequest.h"
+
 
 @interface XRLiveVideoViewController ()
 
@@ -36,8 +38,29 @@
 
 - (IBAction)submitResultClick:(id)sender
 {
-    @weakify(self);
-    uploadLiveFaceRequest *req = [[uploadLiveFaceRequest alloc] init];
+//    @weakify(self);
+//    uploadLiveFaceRequest *req = [[uploadLiveFaceRequest alloc] init];
+//    [req startUploadTaskWithSuccess:^(NSInteger errCode, NSDictionary *responseDict, id model) {
+//        DLog(@"errCode:%ld---dict:%@---model:%@", errCode, responseDict, model);
+//        [SVProgressHUD showImage:[UIImage imageNamed:@"112.jpg"] status:@"图片上传成功"];
+//    } failure:^(NSError *error) {
+//        DLog(@"error:%@", error.localizedFailureReason);
+//    } uploadProgress:^(NSProgress *progress) {
+//        DLog(@"progress:%lld,%lld,%f", progress.totalUnitCount, progress.completedUnitCount, progress.fractionCompleted);
+//
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            @strongify(self);
+//
+//        });
+//    }];
+//    req.showHUD = YES;
+//    req.loginModel = self.loginModel;
+//    [req startRequest];
+    [self updateVideo];
+}
+
+- (void)updateVideo{
+    uploadVideoRequest *req = [[uploadVideoRequest alloc] init];
     [req startUploadTaskWithSuccess:^(NSInteger errCode, NSDictionary *responseDict, id model) {
         DLog(@"errCode:%ld---dict:%@---model:%@", errCode, responseDict, model);
         [SVProgressHUD showImage:[UIImage imageNamed:@"112.jpg"] status:@"图片上传成功"];
@@ -47,13 +70,12 @@
         DLog(@"progress:%lld,%lld,%f", progress.totalUnitCount, progress.completedUnitCount, progress.fractionCompleted);
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            @strongify(self);
-
+           
+            
         });
     }];
     req.showHUD = YES;
     req.loginModel = self.loginModel;
     [req startRequest];
 }
-
 @end
