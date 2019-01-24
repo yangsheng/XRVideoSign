@@ -22,9 +22,13 @@
                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3qw-OL-Cpk">
                         <rect key="frame" x="16" y="14" width="256" height="18"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <state key="normal" title="  合同号:3234-8976-78609-45965" image="icon_checked">
+                        <state key="normal" title="  合同号:3234-8976-78609-45965" image="icon_uncheck">
                             <color key="titleColor" red="0.28769966959999999" green="0.31357687709999998" blue="0.4178517759" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </state>
+                        <state key="selected" image="icon_checked"/>
+                        <connections>
+                            <action selector="checkBtnClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Ay8-nX-IJz"/>
+                        </connections>
                     </button>
                     <imageView userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cq7-VF-cbm">
                         <rect key="frame" x="0.0" y="44" width="320" height="1"/>
@@ -173,5 +177,6 @@
     </objects>
     <resources>
         <image name="icon_checked" width="17.5" height="17.5"/>
+        <image name="icon_uncheck" width="17.5" height="17.5"/>
     </resources>
 </document>

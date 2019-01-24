@@ -150,6 +150,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ListTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"ListTableViewCell"];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;  
     NSDictionary *dic = [self.dataList objectAtIndex:indexPath.row];
     NSString *strNo = [NSString stringWithFormat:@"  合同号:  %@",[dic objectForKey:@"fNO"]];
     [cell.noBtn setTitle:strNo forState:UIControlStateNormal];

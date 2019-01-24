@@ -20,5 +20,10 @@
 
     // Configure the view for the selected state
 }
+- (IBAction)checkBtnClicked:(id)sender {
+    UIButton *btn = (UIButton*)sender;
+    btn.selected = !btn.selected;
+    NSLog(@"");
+}
 
 @end

@@ -60,6 +60,15 @@ typedef void(^PropertyChangeBlock) (AVCaptureDevice * captureDevice);
     
     [self.captureSession startRunning];
 }
+//- (void)viewWillAppear:(BOOL)animated {
+//    [self.navigationController setNavigationBarHidden:YES animated:NO];
+//    [super viewWillAppear:animated];
+//}
+//
+//- (void)viewWillDisappear:(BOOL)animated {
+//    [self.navigationController setNavigationBarHidden:NO animated:NO];
+//    [super viewWillDisappear:animated];
+//}
 - (void)setupNav{
     // 设置导航栏颜色
     [self wr_setNavBarBarTintColor:ssRGBHex(0x495987)];
@@ -502,47 +511,22 @@ typedef void(^PropertyChangeBlock) (AVCaptureDevice * captureDevice);
 
 #pragma mark - UI相关和布局
 - (void)setupUI{
-    
+    [self.view setBackgroundColor:[UIColor blackColor]];
     [self.view addSubview:self.contentView];
-    self.contentView.frame = CGRectMake(0, 124, ScreenWith, ScreenHeight-60-124);
+    self.contentView.frame = CGRectMake(0, 124, ScreenWith, ScreenHeight-100-124);
     
-    self.videoButton = [self createCustomButtonWithName:@"录像"];
+    self.videoButton = [self createCustomButtonWithName:@"录制"];
     [self.videoButton addTarget:self action:@selector(clickVideoButton:) forControlEvents:UIControlEventTouchUpInside];
-    self.videoButton.frame = CGRectMake(ScreenWith/2-30, ScreenHeight-60, 60, 60);
+    self.videoButton.frame = CGRectMake(ScreenWith/2-30, ScreenHeight-80, 60, 60);
     [self.view addSubview:self.videoButton];
     
-//    self.videoButton = [self createCustomButtonWithName:@"录像"];
-//    [self.videoButton addTarget:self action:@selector(clickVideoButton:) forControlEvents:UIControlEventTouchUpInside];
-//    self.videoButton.frame = CGRectMake(ScreenWith-80, ScreenHeight-60, 60, 60);
-//    [self.view addSubview:self.videoButton];
+
     
-    
-//    CGFloat margin = ((ScreenWith - 4*60)/5);
-//    self.flashOnButton = [self createCustomButtonWithName:@"打开闪光灯"];
-//    [self.flashOnButton addTarget:self action:@selector(clickFlashOnButton:) forControlEvents:UIControlEventTouchUpInside];
-//    self.flashOnButton.frame = CGRectMake(margin, 64, 60, 60);
-//    [self.view addSubview:self.flashOnButton];
-//
-//    self.flashOffButton = [self createCustomButtonWithName:@"关闭闪光灯"];
-//    [self.flashOffButton addTarget:self action:@selector(clickFlashOffButton:) forControlEvents:UIControlEventTouchUpInside];
-//    self.flashOffButton.frame = CGRectMake(60+2*margin, 64, 60, 60);
-//    [self.view addSubview:self.flashOffButton];
-//
-//    self.flashAutoButton = [self createCustomButtonWithName:@"自动闪光灯"];
-//    [self.flashAutoButton addTarget:self action:@selector(clickFlashAutoButton:) forControlEvents:UIControlEventTouchUpInside];
-//    self.flashAutoButton.frame = CGRectMake(2*60+3*margin, 64, 60, 60);
-//    [self.view addSubview:self.flashAutoButton];
-//
-//    self.exchangeCamera = [self createCustomButtonWithName:@"切换"];
-//    [self.exchangeCamera addTarget:self action:@selector(clikcExchangeCamera:) forControlEvents:UIControlEventTouchUpInside];
-//    self.exchangeCamera.frame = CGRectMake(ScreenWith-60-margin, 64, 60, 60);
-//    [self.view addSubview:self.exchangeCamera];
-    
-    self.focusCursor = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 60, 60)];
-    self.focusCursor.backgroundColor = [UIColor redColor];
-    self.focusCursor.layer.cornerRadius = 30;
-    self.focusCursor.layer.masksToBounds = YES;
-    [self.view addSubview:self.focusCursor];
+//    self.focusCursor = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 60, 60)];
+//    self.focusCursor.backgroundColor = [UIColor redColor];
+//    self.focusCursor.layer.cornerRadius = 30;
+//    self.focusCursor.layer.masksToBounds = YES;
+//    [self.view addSubview:self.focusCursor];
     
     
 }
