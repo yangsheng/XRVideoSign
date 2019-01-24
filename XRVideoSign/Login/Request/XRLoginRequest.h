@@ -12,8 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface XRLoginRequest : HQMBaseRequest
 /**接口需要传的参数*/
-@property (nonatomic, copy) NSString *uid;
-@property (nonatomic, copy) NSString *token;
+@property (nonatomic, copy) NSString *user;
+@property (nonatomic, copy) NSString *password;
 @end
 
 NS_ASSUME_NONNULL_END

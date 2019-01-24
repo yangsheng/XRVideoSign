@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface XRReportRequest : HQMBaseRequest
 @property (nonatomic,strong) LoginModel *loginModel;
+@property (nonatomic, assign) int current_index;
 @end
 
 NS_ASSUME_NONNULL_END

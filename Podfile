@@ -13,5 +13,5 @@ target 'XRVideoSign' do
   pod 'SVProgressHUD'
   pod 'MJExtension'
   pod 'Masonry'
-  
+  pod 'MJRefresh'
 end

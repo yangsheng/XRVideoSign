@@ -26,7 +26,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self initUI];
-    self.groupList = @[@"国金资本",@"旭冉科技",@"奇牛软件",@"还没想好"];
+   // self.groupList = @[@"国金资本",@"旭冉科技",@"奇牛软件",@"还没想好"];
+    //这个项目目前只有一个账套，不需要请求初始化接口
+    self.groupList = @[@"国金资本"];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -42,18 +44,31 @@
 -(void)initUI{
     self.loginBtn.layer.cornerRadius = 15;
     self.groupText.text = @"国金资本";
+    self.userText.text = @"administrator";
+    self.pwdText.text = @"sun";
 }
 
 - (IBAction)loginBtnClicked:(id)sender {
     ///< 类方法
     XRLoginRequest *clazzReq = [XRLoginRequest requestWithSuccessBlock:^(NSInteger errCode, NSDictionary *responseDict, id model) {
-        XRHomeViewController *homeVC = [[XRHomeViewController alloc] initWithNibName:@"XRHomeViewController" bundle:nil];
-        homeVC.vc = self;
-        homeVC.loginModel = model;
-        [self.navigationController pushViewController:homeVC animated:YES];
+        BOOL bRet = [[responseDict objectForKey:@"success"] boolValue];
+        if (bRet) {
+            XRHomeViewController *homeVC = [[XRHomeViewController alloc] initWithNibName:@"XRHomeViewController" bundle:nil];
+            homeVC.vc = self;
+            homeVC.loginModel = model;
+            [self.navigationController pushViewController:homeVC animated:YES];
+        }else{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [SVProgressHUD showErrorWithStatus:[responseDict objectForKey:@"msg"]];
+            });
+
+        }
+
     } failureBlock:^(NSError *error) {
         DLog(@"error:%@", error.localizedFailureReason);
     }];
+    clazzReq.user = self.userText.text;
+    clazzReq.password = self.pwdText.text;
     [clazzReq startRequest];
 
 }

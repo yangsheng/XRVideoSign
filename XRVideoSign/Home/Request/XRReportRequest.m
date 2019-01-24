@@ -23,6 +23,7 @@
 
 
 - (NSDictionary *)requestArguments {
+    NSString *currentPage  = [NSString stringWithFormat:@"%d",self.current_index];
     NSDictionary *utilObj = @{
                               @"sysmoduleid": @"mui_REP_ASD_spVideoGetContract",
                               @"objectclassid": @"1",
@@ -43,7 +44,7 @@
                                  };
     
     NSDictionary *utilPage = @{
-                             @"currentPage": @"1",
+                             @"currentPage": currentPage,
                              @"pageSize": @"20"
                              };
     

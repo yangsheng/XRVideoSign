@@ -14,24 +14,42 @@
 #import "ListTableViewCell.h"
 #import "XRRecordVideoViewController.h"
 #import "XRReportRequest.h"
+#import "MJRefresh.h"
 
 @interface XRHomeViewController ()
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *dataList;
+@property (nonatomic, assign) int current_index;
 @end
 
 @implementation XRHomeViewController
 
-- (void)loadData{
-    ///< 类方法
-    
+- (void)loadData:(BOOL)bFirst{
     XRReportRequest *clazzReq = [XRReportRequest requestWithSuccessBlock:^(NSInteger errCode, NSDictionary *responseDict, id model) {
-        self.dataList = [[responseDict objectForKey:@"obj"] objectAtIndex:0];
+        if (bFirst) {
+           self.dataList = [[responseDict objectForKey:@"obj"] objectAtIndex:0];
+           [self.tableView.mj_header endRefreshing];
+        }else{
+            NSMutableArray *list = [[NSMutableArray alloc] initWithArray:self.dataList];
+            NSArray *ar = [[responseDict objectForKey:@"obj"] objectAtIndex:0];
+            [list addObjectsFromArray:ar];
+            self.dataList = [list mutableCopy];
+            [self.tableView.mj_footer endRefreshing];
+        }
         [self.tableView reloadData];
     } failureBlock:^(NSError *error) {
+        [self.tableView.mj_header endRefreshing];
+        [self.tableView.mj_footer endRefreshing];
         DLog(@"error:%@", error.localizedFailureReason);
     }];
+    if (bFirst) {
+       self.current_index = 1;
+    }else{
+       ++self.current_index;
+    }
+
     clazzReq.loginModel = self.loginModel;
+    clazzReq.current_index = self.current_index;
     [clazzReq startRequest];
 }
 - (void)viewDidLoad {
@@ -39,7 +57,7 @@
     // Do any additional setup after loading the view from its nib.
     self.title = @"待面签报表";
     [self setupNav];
-    [self loadData];
+    [self loadData:YES];
     //获取通知中心单例对象
     NSNotificationCenter * center = [NSNotificationCenter defaultCenter];
     //添加当前类对象为一个观察者，name和object设置为nil，表示接收一切通知
@@ -48,7 +66,12 @@
     
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.tableView registerNib:[UINib nibWithNibName:@"ListTableViewCell" bundle:nil] forCellReuseIdentifier:@"ListTableViewCell"];
-    
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [self loadData:YES];
+    }];
+    self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+       [self loadData:NO];
+    }];
 }
 
 -(void)doExit:(id)sender{

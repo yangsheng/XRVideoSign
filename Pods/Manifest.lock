@@ -18,6 +18,7 @@ PODS:
   - IQKeyboardManager (6.2.0)
   - Masonry (1.1.0)
   - MJExtension (3.0.15.1)
+  - MJRefresh (3.1.15.7)
   - SVProgressHUD (2.2.5)
   - WRNavigationBar (1.2.0)
 
@@ -27,6 +28,7 @@ DEPENDENCIES:
   - IQKeyboardManager
   - Masonry
   - MJExtension
+  - MJRefresh
   - SVProgressHUD
   - WRNavigationBar
 
@@ -37,6 +39,7 @@ SPEC REPOS:
     - IQKeyboardManager
     - Masonry
     - MJExtension
+    - MJRefresh
     - SVProgressHUD
     - WRNavigationBar
 
@@ -46,9 +49,10 @@ SPEC CHECKSUMS:
   IQKeyboardManager: 6194101620b73af5e67900b8f89707a99de0b804
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MJExtension: 19bc33ce2eee2d319760f5622562cf581a6ff756
+  MJRefresh: 697f8ec75ebdbe9207767bb682cf0f51b0d8a41f
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   WRNavigationBar: dc952230effbb646785f962587caaac06c60f229
 
-PODFILE CHECKSUM: c9f3f54cc169c2f8d058abb3318ac2cefef3115f
+PODFILE CHECKSUM: 4fa6cec657d9712c30bec2e6aaa76d2cd29d5037
 
 COCOAPODS: 1.6.0.beta.2

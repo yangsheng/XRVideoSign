@@ -8,7 +8,6 @@
 
 #import "HQMBaseRequest.h"
 #import "Reachability.h"
-#import "SVProgressHUD.h"
 #import "DES3Util.h"
 
 #if __has_include(<AFNetworking/AFNetworking.h>)
@@ -296,7 +295,10 @@ NSString * const HQMNetworkDomain = @"http://123.207.109.93:9010/xrspip";
         }
 
         if (_showHUD) {
-            [SVProgressHUD showErrorWithStatus:@"网络连接失败"];
+            dispatch_async(dispatch_get_main_queue(), ^{
+               [SVProgressHUD showErrorWithStatus:@"网络连接失败"];
+            });
+
         } else {
             [SVProgressHUD dismiss];
         }

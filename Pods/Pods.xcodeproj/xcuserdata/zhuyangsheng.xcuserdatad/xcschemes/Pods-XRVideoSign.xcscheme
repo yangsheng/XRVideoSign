@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D75270D07D6F787D70F71B39EEB37651"
+               BlueprintIdentifier = "5A02F77A54C30E3A21E2DD5797A87D2D"
                BlueprintName = "Pods-XRVideoSign"
                ReferencedContainer = "container:Pods.xcodeproj"
                BuildableName = "libPods-XRVideoSign.a">

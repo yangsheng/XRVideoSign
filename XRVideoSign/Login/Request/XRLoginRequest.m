@@ -24,8 +24,8 @@
 
 - (NSDictionary *)requestArguments {
     NSDictionary *dic = @{
-                          @"userno": @"administrator",
-                          @"userpwd": @"sun"
+                          @"userno": self.user,
+                          @"userpwd": self.password
                           };
     
     NSString *jsonString = [XRTools convertToJsonData:dic];
@@ -55,21 +55,23 @@
     NSError *error = nil;
     
     if (errCode == 0) {
-        NSMutableArray *friendLists = [NSMutableArray arrayWithCapacity:0];
-//        NSArray *arr = [dict objectForKey:@"friend_list"];
-//        for (NSDictionary *temp in arr) {
-//            HQMContact *contact = [MTLJSONAdapter modelOfClass:[HQMContact class] fromJSONDictionary:temp error:&error];
-//            [friendLists addObject:contact];
-//        }
-        LoginModel *model = [LoginModel mj_objectWithKeyValues:[[dict objectForKey:@"obj"] objectAtIndex:1]];
-        if (self.successBlock) {
-            self.successBlock(errCode, dict, model);
+        BOOL bRet = [[dict objectForKey:@"success"] boolValue];
+        if (bRet) {
+            LoginModel *model = [LoginModel mj_objectWithKeyValues:[[dict objectForKey:@"obj"] objectAtIndex:1]];
+            if (self.successBlock) {
+                self.successBlock(errCode, dict, model);
+            }
+        }else{
+            if (self.successBlock) {
+                self.successBlock(errCode, dict, nil);
+            }
         }
+
 
     }
     else {
-        if (self.successBlock) {
-            self.successBlock(errCode, dict, nil);
+        if (self.failureBlock) {
+            self.failureBlock(error);
         }
     }
 }
