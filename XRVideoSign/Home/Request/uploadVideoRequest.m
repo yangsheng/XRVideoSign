@@ -28,7 +28,7 @@
                                @"longitude":@"0",
                                @"latitude":@"0",
                                @"gpskind":@"",
-                               @"issave":@"0",
+                               @"issave":@"false",
                                @"objectid":[userDefault objectForKey:@"Objectid"],
                                @"dataid":[userDefault objectForKey:@"Dataid"],
                                @"adjunctclassid":[userDefault objectForKey:@"Adjunctclassid"]
