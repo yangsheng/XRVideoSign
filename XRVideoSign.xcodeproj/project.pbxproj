@@ -32,6 +32,13 @@
 		1E2939AA21F998B70026D6FC /* XRReportFormRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E2939A921F998B70026D6FC /* XRReportFormRequest.m */; };
 		1E2939AD21F9A4C70026D6FC /* XRRelationListRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E2939AC21F9A4C70026D6FC /* XRRelationListRequest.m */; };
 		1E2939B021F9B9080026D6FC /* XRRelationRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E2939AF21F9B9080026D6FC /* XRRelationRequest.m */; };
+		1E2939B421F9BE580026D6FC /* XRRelationFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E2939B221F9BE580026D6FC /* XRRelationFormViewController.m */; };
+		1E2939B521F9BE580026D6FC /* XRRelationFormViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E2939B321F9BE580026D6FC /* XRRelationFormViewController.xib */; };
+		1E2939BB21F9C26B0026D6FC /* XRFaceLiveFourRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E2939BA21F9C26B0026D6FC /* XRFaceLiveFourRequest.m */; };
+		1E2939BF21F9C5820026D6FC /* XRLiveVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E2939BD21F9C5820026D6FC /* XRLiveVideoViewController.m */; };
+		1E2939C021F9C5820026D6FC /* XRLiveVideoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E2939BE21F9C5820026D6FC /* XRLiveVideoViewController.xib */; };
+		1E2939C321F9DC270026D6FC /* uploadLiveFaceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E2939C221F9DC270026D6FC /* uploadLiveFaceRequest.m */; };
+		1E2939C521F9DEF90026D6FC /* 123.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 1E2939C421F9DEF90026D6FC /* 123.mp4 */; };
 		1E2A06CA21F29B5F00F5422C /* XRHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E2A06C821F29B5F00F5422C /* XRHomeViewController.m */; };
 		1E2A06CB21F29B5F00F5422C /* XRHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E2A06C921F29B5F00F5422C /* XRHomeViewController.xib */; };
 		1E8036A921F1FBF600F465FC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E8036A821F1FBF600F465FC /* AppDelegate.m */; };
@@ -98,6 +105,17 @@
 		1E2939AC21F9A4C70026D6FC /* XRRelationListRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XRRelationListRequest.m; sourceTree = "<group>"; };
 		1E2939AE21F9B9080026D6FC /* XRRelationRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XRRelationRequest.h; sourceTree = "<group>"; };
 		1E2939AF21F9B9080026D6FC /* XRRelationRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XRRelationRequest.m; sourceTree = "<group>"; };
+		1E2939B121F9BE580026D6FC /* XRRelationFormViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XRRelationFormViewController.h; sourceTree = "<group>"; };
+		1E2939B221F9BE580026D6FC /* XRRelationFormViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XRRelationFormViewController.m; sourceTree = "<group>"; };
+		1E2939B321F9BE580026D6FC /* XRRelationFormViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XRRelationFormViewController.xib; sourceTree = "<group>"; };
+		1E2939B921F9C26B0026D6FC /* XRFaceLiveFourRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XRFaceLiveFourRequest.h; sourceTree = "<group>"; };
+		1E2939BA21F9C26B0026D6FC /* XRFaceLiveFourRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XRFaceLiveFourRequest.m; sourceTree = "<group>"; };
+		1E2939BC21F9C5820026D6FC /* XRLiveVideoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XRLiveVideoViewController.h; sourceTree = "<group>"; };
+		1E2939BD21F9C5820026D6FC /* XRLiveVideoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XRLiveVideoViewController.m; sourceTree = "<group>"; };
+		1E2939BE21F9C5820026D6FC /* XRLiveVideoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XRLiveVideoViewController.xib; sourceTree = "<group>"; };
+		1E2939C121F9DC270026D6FC /* uploadLiveFaceRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = uploadLiveFaceRequest.h; sourceTree = "<group>"; };
+		1E2939C221F9DC270026D6FC /* uploadLiveFaceRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = uploadLiveFaceRequest.m; sourceTree = "<group>"; };
+		1E2939C421F9DEF90026D6FC /* 123.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = 123.mp4; sourceTree = "<group>"; };
 		1E2A06C721F29B5F00F5422C /* XRHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XRHomeViewController.h; sourceTree = "<group>"; };
 		1E2A06C821F29B5F00F5422C /* XRHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XRHomeViewController.m; sourceTree = "<group>"; };
 		1E2A06C921F29B5F00F5422C /* XRHomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XRHomeViewController.xib; sourceTree = "<group>"; };
@@ -153,6 +171,12 @@
 				1E29393921F52FE50026D6FC /* XRRecordVideoViewController.h */,
 				1E29393A21F52FE50026D6FC /* XRRecordVideoViewController.m */,
 				1E29393B21F52FE50026D6FC /* XRRecordVideoViewController.xib */,
+				1E2939B121F9BE580026D6FC /* XRRelationFormViewController.h */,
+				1E2939B221F9BE580026D6FC /* XRRelationFormViewController.m */,
+				1E2939B321F9BE580026D6FC /* XRRelationFormViewController.xib */,
+				1E2939BC21F9C5820026D6FC /* XRLiveVideoViewController.h */,
+				1E2939BD21F9C5820026D6FC /* XRLiveVideoViewController.m */,
+				1E2939BE21F9C5820026D6FC /* XRLiveVideoViewController.xib */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -260,6 +284,10 @@
 				1E2939AC21F9A4C70026D6FC /* XRRelationListRequest.m */,
 				1E2939AE21F9B9080026D6FC /* XRRelationRequest.h */,
 				1E2939AF21F9B9080026D6FC /* XRRelationRequest.m */,
+				1E2939B921F9C26B0026D6FC /* XRFaceLiveFourRequest.h */,
+				1E2939BA21F9C26B0026D6FC /* XRFaceLiveFourRequest.m */,
+				1E2939C121F9DC270026D6FC /* uploadLiveFaceRequest.h */,
+				1E2939C221F9DC270026D6FC /* uploadLiveFaceRequest.m */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -276,6 +304,7 @@
 		1E29399E21F980630026D6FC /* RS */ = {
 			isa = PBXGroup;
 			children = (
+				1E2939C421F9DEF90026D6FC /* 123.mp4 */,
 				1E29399F21F980630026D6FC /* company.index */,
 			);
 			name = RS;
@@ -285,10 +314,10 @@
 		1E2939A121F982810026D6FC /* CCNetWorking */ = {
 			isa = PBXGroup;
 			children = (
-				1E2939A221F982810026D6FC /* CCNetworkHelper.h */,
 				1E2939A321F982810026D6FC /* CCNetworkCache.h */,
-				1E2939A421F982810026D6FC /* CCNetworkHelper.m */,
 				1E2939A521F982810026D6FC /* CCNetworkCache.m */,
+				1E2939A221F982810026D6FC /* CCNetworkHelper.h */,
+				1E2939A421F982810026D6FC /* CCNetworkHelper.m */,
 			);
 			path = CCNetWorking;
 			sourceTree = "<group>";
@@ -468,6 +497,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				1E8036C321F1FE1A00F465FC /* XRLoginViewController.xib in Resources */,
+				1E2939B521F9BE580026D6FC /* XRRelationFormViewController.xib in Resources */,
+				1E2939C021F9C5820026D6FC /* XRLiveVideoViewController.xib in Resources */,
 				1E29393121F3D3CC0026D6FC /* XRSlideViewController.xib in Resources */,
 				1E8036B421F1FBFB00F465FC /* LaunchScreen.storyboard in Resources */,
 				1E8036CC21F2108200F465FC /* CDZContentView.xib in Resources */,
@@ -475,6 +506,7 @@
 				1E8036B121F1FBFB00F465FC /* Assets.xcassets in Resources */,
 				1E29393821F51C7E0026D6FC /* ListTableViewCell.xib in Resources */,
 				1E8036AF21F1FBF600F465FC /* Main.storyboard in Resources */,
+				1E2939C521F9DEF90026D6FC /* 123.mp4 in Resources */,
 				1E29393D21F52FE50026D6FC /* XRRecordVideoViewController.xib in Resources */,
 				1E2A06CB21F29B5F00F5422C /* XRHomeViewController.xib in Resources */,
 			);
@@ -542,7 +574,9 @@
 				1E2939AD21F9A4C70026D6FC /* XRRelationListRequest.m in Sources */,
 				1E29399D21F8E88E0026D6FC /* ReportModel.m in Sources */,
 				1E8036C221F1FE1A00F465FC /* XRLoginViewController.m in Sources */,
+				1E2939BF21F9C5820026D6FC /* XRLiveVideoViewController.m in Sources */,
 				1E29397B21F674CF0026D6FC /* NSData+Base64.m in Sources */,
+				1E2939C321F9DC270026D6FC /* uploadLiveFaceRequest.m in Sources */,
 				1E8036B721F1FBFB00F465FC /* main.m in Sources */,
 				1E29398321F676770026D6FC /* HQMBaseRequest.m in Sources */,
 				1E29398921F678C80026D6FC /* XRLoginRequest.m in Sources */,
@@ -550,10 +584,12 @@
 				1E29397721F674CF0026D6FC /* AESCrypt.m in Sources */,
 				1E2939B021F9B9080026D6FC /* XRRelationRequest.m in Sources */,
 				1E8036CB21F2108200F465FC /* CDZPicker.m in Sources */,
+				1E2939BB21F9C26B0026D6FC /* XRFaceLiveFourRequest.m in Sources */,
 				1E29399121F7C59C0026D6FC /* LoginModel.m in Sources */,
 				1E29397A21F674CF0026D6FC /* NSData+CommonCrypto.m in Sources */,
 				1E2939AA21F998B70026D6FC /* XRReportFormRequest.m in Sources */,
 				1E29397621F674CF0026D6FC /* NSString+Base64.m in Sources */,
+				1E2939B421F9BE580026D6FC /* XRRelationFormViewController.m in Sources */,
 				1E8036A921F1FBF600F465FC /* AppDelegate.m in Sources */,
 				1E29398221F676770026D6FC /* Reachability.m in Sources */,
 				1E2939A721F982810026D6FC /* CCNetworkCache.m in Sources */,

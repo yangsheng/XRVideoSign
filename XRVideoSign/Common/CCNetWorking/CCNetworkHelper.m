@@ -8,7 +8,7 @@
 
 #import "CCNetworkHelper.h"
 
-#define CCAppBaseHostURL @""
+#define CCAppBaseHostURL @"http://123.207.109.93:9010/xrspip"
 
 @implementation CCNetworkHelper
 
@@ -32,7 +32,6 @@ static AFHTTPSessionManager *_sessionManager;
     
     // 设置服务器返回结果的类型:JSON (AFJSONResponseSerializer,AFHTTPResponseSerializer)
     _sessionManager.requestSerializer = [AFJSONRequestSerializer serializer];
-    _sessionManager.responseSerializer = [AFHTTPResponseSerializer serializer];
     _sessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/html", @"text/json", @"text/plain", @"text/javascript", @"text/xml", @"image/*",@"text/encode", nil];
 }
 

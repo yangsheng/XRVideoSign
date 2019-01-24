@@ -1,51 +1,28 @@
 //
-//  XRRelationRequest.m
+//  XRFaceLiveFourRequest.m
 //  XRVideoSign
 //
 //  Created by zhu yangsheng on 1/24/19.
 //  Copyright © 2019 xrinfo. All rights reserved.
 //
 
-#import "XRRelationRequest.h"
+#import "XRFaceLiveFourRequest.h"
 
-@implementation XRRelationRequest
+@implementation XRFaceLiveFourRequest
+
 - (HQMRequestMethod)requestMethod {
     return HQMRequestMethodPOST;
 }
 
 - (NSString *)requestURLPath {
-    return @"/xrspip/api/objectrelation";
+    return @"/xrspip/api/getFaceLivefour";
 }
 
 
 
 
 - (NSDictionary *)requestArguments {
-    NSDictionary *utilObj = @{
-                              @"dataid":@"2004",
-                              @"relationid":@"1112",
-                              @"relationoperid":@"11",
-                              @"relationdataid":@"2004",
-                              @"relationidkeyvalues":@"2004,2015,"
-                              };
-    NSDictionary *data = @{
-                              };
-    NSDictionary *keyDatas = @{
-                               @"datas": @[]
-                           };
-    NSDictionary *dic = @{
-                          @"utilObj": utilObj,
-                          @"data": data,
-                          @"keyDatas":keyDatas
-                          };
-    
-    NSString *jsonString = [XRTools convertToJsonData:dic];
-    NSString *encString = [DES3Util AES128Encrypt:jsonString];
-    return @{
-             @"data": encString
-             };
-    
-    //return nil;如果接口不需传参，返回 nil 即可
+  return nil;
 }
 
 ///< 配置请求头，根据需求决定是否重写

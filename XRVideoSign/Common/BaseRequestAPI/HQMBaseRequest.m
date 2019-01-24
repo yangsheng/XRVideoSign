@@ -16,15 +16,15 @@
 #define kCertificateName @"httpsServerAuth"
 
 #ifdef DEBUG //处于开发测试阶段
-
-NSString * const HQMNetworkDomain = @"http://123.207.109.93:9010";
-
+//192.168.2.111:9010
+//NSString * const HQMNetworkDomain = @"http://123.207.109.93:9010";
+NSString * const HQMNetworkDomain = @"http://192.168.2.111:9010";
 ///< 关闭https SSL 验证
 #define kOpenHttpsAuth NO
 
 #else //处于发布正式阶段
 
-NSString * const HQMNetworkDomain = @"http://123.207.109.93:9010/xrspip";
+NSString * const HQMNetworkDomain = @"http://192.168.2.111:9010/xrspip";
 
 ///< 开启https SSL 验证
 #define kOpenHttpsAuth YES

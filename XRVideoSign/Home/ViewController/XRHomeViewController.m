@@ -13,10 +13,11 @@
 #import "XRLoginViewController.h"
 #import "ListTableViewCell.h"
 #import "XRRecordVideoViewController.h"
+#import "XRRelationFormViewController.h"
 #import "XRReportRequest.h"
 #import "XRReportFormRequest.h"
 #import "XRRelationListRequest.h"
-#import "XRRelationRequest.h"
+
 #import "MJRefresh.h"
 
 @interface XRHomeViewController ()
@@ -160,11 +161,13 @@
 
 }
 - (IBAction)recordBtnClicked:(id)sender {
-//    XRRecordVideoViewController *recordVC = [[XRRecordVideoViewController alloc] initWithNibName:@"XRRecordVideoViewController" bundle:nil];
-//    [self.navigationController pushViewController:recordVC animated:YES];
     XRRelationListRequest *clazzReq = [XRRelationListRequest requestWithSuccessBlock:^(NSInteger errCode, NSDictionary *responseDict, id model) {
         NSLog(@"");
-        [self loadRelationData];
+        XRRelationFormViewController *VC = [[XRRelationFormViewController alloc] initWithNibName:@"XRRelationFormViewController" bundle:nil];
+        VC.loginModel = self.loginModel;
+        VC.dataDict = [self.dataList objectAtIndex:0];
+        [self.navigationController pushViewController:VC animated:YES];
+//        [self loadRelationData];
     } failureBlock:^(NSError *error) {
         DLog(@"error:%@", error.localizedFailureReason);
     }];
@@ -174,17 +177,7 @@
     [clazzReq startRequest];
 }
 
-- (void)loadRelationData{
-    XRRelationRequest *clazzReq = [XRRelationRequest requestWithSuccessBlock:^(NSInteger errCode, NSDictionary *responseDict, id model) {
-        NSLog(@"");
-    } failureBlock:^(NSError *error) {
-        DLog(@"error:%@", error.localizedFailureReason);
-    }];
-    
-    clazzReq.loginModel = self.loginModel;
-    clazzReq.dataDict = [self.dataList objectAtIndex:0];
-    [clazzReq startRequest];
-}
+
 #pragma mark - tableview delegate / dataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
