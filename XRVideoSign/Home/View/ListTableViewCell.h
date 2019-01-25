@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void(^CellItemClick)(NSInteger nIndex,BOOL bSelected);
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ListTableViewCell : UITableViewCell
@@ -19,6 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,strong) IBOutlet UILabel *nameLabel;
 @property (nonatomic,strong) IBOutlet UILabel *moneyLabel;
 @property (nonatomic,strong) IBOutlet UILabel *expiredLabel;
+@property (nonatomic,copy) CellItemClick cellItemClick;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -24,6 +24,9 @@
     UIButton *btn = (UIButton*)sender;
     btn.selected = !btn.selected;
     NSLog(@"");
+    if (self.cellItemClick) {
+        self.cellItemClick(btn.tag,btn.selected);
+    }
 }
 
 @end

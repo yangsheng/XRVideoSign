@@ -22,7 +22,10 @@
 
 @interface XRHomeViewController ()
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) IBOutlet UIButton *signBtn;
+
 @property (nonatomic, strong) NSMutableArray *dataList;
+@property (nonatomic, strong) NSMutableArray *selectList;
 @property (nonatomic, strong) NSMutableDictionary *filters;
 @property (nonatomic, assign) int current_index;
 @end
@@ -32,6 +35,9 @@
 - (void)loadFormData{
     XRReportFormRequest *clazzReq = [XRReportFormRequest requestWithSuccessBlock:^(NSInteger errCode, NSDictionary *responseDict, id model) {
         NSLog(@"");
+        
+ //       [[NSUserDefaults standardUserDefaults] setObject:@"reportFormObjectid" forKey:@""];
+        
         self.filters = [[NSMutableDictionary alloc] init];
         NSArray *ar = [[[responseDict objectForKey:@"obj"] objectAtIndex:0] objectForKey:@"filters"];
         for (NSDictionary *dic in ar) {
@@ -49,6 +55,7 @@
 - (void)loadData:(BOOL)bFirst{
     XRReportRequest *clazzReq = [XRReportRequest requestWithSuccessBlock:^(NSInteger errCode, NSDictionary *responseDict, id model) {
         if (bFirst) {
+           self.signBtn.hidden = NO;
            self.dataList = [[responseDict objectForKey:@"obj"] objectAtIndex:0];
            [self.tableView.mj_header endRefreshing];
         }else{
@@ -79,6 +86,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.title = @"待面签报表";
+    self.signBtn.layer.cornerRadius = 8;
+    self.signBtn.hidden = YES;
+    self.selectList = [[NSMutableArray alloc] init];
     [self setupNav];
     [self loadFormData];
 
@@ -131,13 +141,13 @@
     UIBarButtonItem *leftNavItem = [[UIBarButtonItem alloc] initWithCustomView:button];
     self.navigationItem.leftBarButtonItem = leftNavItem;
 
-    UIBarButtonItem *rightNavItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_search"]
-                                                                     style:UIBarButtonItemStylePlain
-                                                                    target:self
-                                                                    action:@selector(searchBtnclicked:)];
-
-  //  rightNavItem.imageInsets = UIEdgeInsetsMake(0, -12, 0, 0);
-    self.navigationItem.rightBarButtonItem = rightNavItem;
+//    UIBarButtonItem *rightNavItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_search"]
+//                                                                     style:UIBarButtonItemStylePlain
+//                                                                    target:self
+//                                                                    action:@selector(searchBtnclicked:)];
+//
+//  //  rightNavItem.imageInsets = UIEdgeInsetsMake(0, -12, 0, 0);
+//    self.navigationItem.rightBarButtonItem = rightNavItem;
 }
 
 - (void)leftClick{
@@ -161,19 +171,23 @@
 
 }
 - (IBAction)recordBtnClicked:(id)sender {
+    if ([self.selectList count] == 0) {
+        [SVProgressHUD setBackgroundColor:[UIColor lightGrayColor]];
+        [SVProgressHUD showErrorWithStatus:@"请至少选择一个合同进行面签"];
+        return;
+    }
     XRRelationListRequest *clazzReq = [XRRelationListRequest requestWithSuccessBlock:^(NSInteger errCode, NSDictionary *responseDict, id model) {
         NSLog(@"");
         XRRelationFormViewController *VC = [[XRRelationFormViewController alloc] initWithNibName:@"XRRelationFormViewController" bundle:nil];
         VC.loginModel = self.loginModel;
-        VC.dataDict = [self.dataList objectAtIndex:0];
+        VC.selectList = self.selectList;
         [self.navigationController pushViewController:VC animated:YES];
-//        [self loadRelationData];
     } failureBlock:^(NSError *error) {
         DLog(@"error:%@", error.localizedFailureReason);
     }];
     
     clazzReq.loginModel = self.loginModel;
-    clazzReq.dataDict = [self.dataList objectAtIndex:0];
+    clazzReq.dataDict = [self.selectList objectAtIndex:0];
     [clazzReq startRequest];
 }
 
@@ -199,6 +213,17 @@
     cell.nameLabel.text = [dic objectForKey:@"fName"]?[dic objectForKey:@"fName"]:@"";
     cell.moneyLabel.text = [NSString stringWithFormat:@"%ld", [[dic objectForKey:@"融资金额"] integerValue]];
     cell.expiredLabel.text = [NSString stringWithFormat:@"%ld",[[dic objectForKey:@"租赁期限"] integerValue]];
+    cell.noBtn.tag = indexPath.row;
+    cell.cellItemClick = ^(NSInteger nIndex,BOOL bSelected) {
+        //
+        if (bSelected) {
+            [self.selectList addObject:[self.dataList objectAtIndex:nIndex]];
+        }else{
+            [self.selectList removeObject:[self.dataList objectAtIndex:nIndex]];
+        }
+        NSLog(@"");
+    };
+    
     return cell;
 }
 

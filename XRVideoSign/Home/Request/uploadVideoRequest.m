@@ -19,16 +19,13 @@
 
 - (NSDictionary *)requestArguments {
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-//    [userDefault setObject:strObjectid forKey:@"Objectid"];
-//    [userDefault setObject:strDataid forKey:@"Dataid"];
-//    [userDefault setObject:strAdjunctclassid forKey:@"Adjunctclassid"];
-//    [userDefault synchronize];
+    bool bool_false = false;
     NSDictionary *dicValue = @{
                                @"kindid":@"0",
                                @"longitude":@"0",
                                @"latitude":@"0",
                                @"gpskind":@"",
-                               @"issave":@"false",
+                               @"issave":@(bool_false),
                                @"objectid":[userDefault objectForKey:@"Objectid"],
                                @"dataid":[userDefault objectForKey:@"Dataid"],
                                @"adjunctclassid":[userDefault objectForKey:@"Adjunctclassid"]

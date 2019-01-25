@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface XRRelationFormViewController : UIViewController
 @property (nonatomic,strong) LoginModel *loginModel;
-@property (nonatomic, strong) NSMutableDictionary *dataDict;
+@property (nonatomic, strong) NSMutableArray *selectList;
 
 @end
 
