@@ -22,7 +22,7 @@
 typedef void(^PropertyChangeBlock) (AVCaptureDevice * captureDevice);
 
 @interface XRLiveVideoViewController ()<AVCaptureFileOutputRecordingDelegate>//视频文件输出代理
-@property (nonatomic,strong) FFCircularProgressView *circularPV;
+
 @property (nonatomic,strong) UILabel *codeLabel;
 
 //负责输入和输出设备之间的数据传输
@@ -67,11 +67,7 @@ typedef void(^PropertyChangeBlock) (AVCaptureDevice * captureDevice);
     
     [self.captureSession startRunning];
     // Do any additional setup after loading the view from its nib.
-    self.circularPV = [[FFCircularProgressView alloc] initWithFrame:CGRectMake(ScreenWith/2-50, ScreenHeight/2-50, 100, 100)];
-    //_circularPV.center = self.view.center;
-    
-    [self.view addSubview:_circularPV];
-    _circularPV.hidden = YES;
+
 
     [self loadFaceLiveData];
 }
@@ -90,46 +86,28 @@ typedef void(^PropertyChangeBlock) (AVCaptureDevice * captureDevice);
 
 - (IBAction)submitResultClick:(id)sender
 {
-    @weakify(self);
-    uploadLiveFaceRequest *req = [[uploadLiveFaceRequest alloc] init];
-    [req startUploadTaskWithSuccess:^(NSInteger errCode, NSDictionary *responseDict, id model) {
-        DLog(@"errCode:%ld---dict:%@---model:%@", errCode, responseDict, model);
-        [SVProgressHUD showImage:[UIImage imageNamed:@"112.jpg"] status:@"图片上传成功"];
-    } failure:^(NSError *error) {
-        DLog(@"error:%@", error.localizedFailureReason);
-    } uploadProgress:^(NSProgress *progress) {
-        DLog(@"progress:%lld,%lld,%f", progress.totalUnitCount, progress.completedUnitCount, progress.fractionCompleted);
-
-        dispatch_async(dispatch_get_main_queue(), ^{
-            @strongify(self);
-
-        });
-    }];
-    req.showHUD = YES;
-    req.loginModel = self.loginModel;
-    [req startRequest];
 //    [self updateVideo];
 }
 
-- (void)updateVideo{
-    uploadVideoRequest *req = [[uploadVideoRequest alloc] init];
-    [req startUploadTaskWithSuccess:^(NSInteger errCode, NSDictionary *responseDict, id model) {
-        DLog(@"errCode:%ld---dict:%@---model:%@", errCode, responseDict, model);
-        _circularPV.hidden = YES;
-        [SVProgressHUD showImage:[UIImage imageNamed:@"112.jpg"] status:@"图片上传成功"];
-    } failure:^(NSError *error) {
-        DLog(@"error:%@", error.localizedFailureReason);
-    } uploadProgress:^(NSProgress *progress) {
-        DLog(@"progress:%lld,%lld,%f", progress.totalUnitCount, progress.completedUnitCount, progress.fractionCompleted);
-          _circularPV.hidden = NO;
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [_circularPV setProgress:progress.fractionCompleted];
-        });
-    }];
-    req.showHUD = YES;
-    req.loginModel = self.loginModel;
-    [req startRequest];
-}
+//- (void)updateVideo{
+//    uploadVideoRequest *req = [[uploadVideoRequest alloc] init];
+//    [req startUploadTaskWithSuccess:^(NSInteger errCode, NSDictionary *responseDict, id model) {
+//        DLog(@"errCode:%ld---dict:%@---model:%@", errCode, responseDict, model);
+//        _circularPV.hidden = YES;
+//        [SVProgressHUD showImage:[UIImage imageNamed:@"112.jpg"] status:@"图片上传成功"];
+//    } failure:^(NSError *error) {
+//        DLog(@"error:%@", error.localizedFailureReason);
+//    } uploadProgress:^(NSProgress *progress) {
+//        DLog(@"progress:%lld,%lld,%f", progress.totalUnitCount, progress.completedUnitCount, progress.fractionCompleted);
+//          _circularPV.hidden = NO;
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            [_circularPV setProgress:progress.fractionCompleted];
+//        });
+//    }];
+//    req.showHUD = YES;
+//    req.loginModel = self.loginModel;
+//    [req startRequest];
+//}
 - (void)setupNav{
     // 设置导航栏颜色
     [self wr_setNavBarBarTintColor:[UIColor blackColor]];
@@ -549,7 +527,7 @@ typedef void(^PropertyChangeBlock) (AVCaptureDevice * captureDevice);
 }
 
 - (void)clickVideoButton:(UIButton *)sender{
-    
+    [self.videoButton setTitle:@"结束" forState:UIControlStateNormal];
     //根据设备输出获得连接
     AVCaptureConnection *captureConnection=[self.captureMovieFileOutPut connectionWithMediaType:AVMediaTypeVideo];
     //根据连接取得设备输出的数据
@@ -568,6 +546,9 @@ typedef void(^PropertyChangeBlock) (AVCaptureDevice * captureDevice);
     }
     else{
         [self.captureMovieFileOutPut stopRecording];//停止录制
+        NSNotificationCenter * center = [NSNotificationCenter defaultCenter];
+        [center postNotificationName:@"SendCheckVideoNofication" object:nil];
+        [self.navigationController popViewControllerAnimated:NO];
     }
 }
 

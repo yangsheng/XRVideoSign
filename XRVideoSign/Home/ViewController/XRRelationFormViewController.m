@@ -11,12 +11,19 @@
 #import "WRNavigationBar.h"
 #import "XRLiveVideoViewController.h"
 
+#import "uploadLiveFaceRequest.h"
+#import "uploadVideoRequest.h"
+#import "FFCircularProgressView.h"
+
+#define ScreenWith     [UIScreen mainScreen].bounds.size.width
+#define ScreenHeight   [UIScreen mainScreen].bounds.size.height
+
 @interface XRRelationFormViewController ()
 @property (nonatomic, strong) IBOutlet UIButton *signBtn;
 @property (nonatomic, strong) IBOutlet UITextField *nameField;
 @property (nonatomic, strong) IBOutlet UITextField *idField;
 @property (nonatomic, strong) IBOutlet UILabel *noLabel;
-
+@property (nonatomic,strong) FFCircularProgressView *circularPV;
 @end
 
 @implementation XRRelationFormViewController
@@ -70,6 +77,18 @@
     self.title = @"合同信息确认";
     self.signBtn.layer.cornerRadius = 8;
     
+    self.circularPV = [[FFCircularProgressView alloc] initWithFrame:CGRectMake(ScreenWith/2-50, ScreenHeight/2-50, 100, 100)];
+    //_circularPV.center = self.view.center;
+    
+    [self.view addSubview:_circularPV];
+    _circularPV.hidden = YES;
+    
+    //获取通知中心单例对象
+    NSNotificationCenter * center = [NSNotificationCenter defaultCenter];
+    //注册活体验证的消息
+    [center addObserver:self selector:@selector(SendLiveVideoCheck:) name:@"SendCheckVideoNofication" object:nil];
+    
+    
     [self setupNav];
     [self initUI];
     [self loadRelationData];
@@ -113,6 +132,34 @@
     [self.navigationController pushViewController:VC animated:YES];
 }
 
+- (void)SendLiveVideoCheck:(NSNotification *)notification {
+    self.signBtn.enabled = NO;
+    [self sendVideoToCheck];
+}
+- (void)sendVideoToCheck{
+    @weakify(self);
+    uploadLiveFaceRequest *req = [[uploadLiveFaceRequest alloc] init];
+    [req startUploadTaskWithSuccess:^(NSInteger errCode, NSDictionary *responseDict, id model) {
+        DLog(@"errCode:%ld---dict:%@---model:%@", errCode, responseDict, model);
+        _circularPV.hidden = YES;
+        self.signBtn.enabled = YES;
+        [SVProgressHUD showImage:[UIImage imageNamed:@"112.jpg"] status:@"图片上传成功"];
+    } failure:^(NSError *error) {
+        self.signBtn.enabled = YES;
+        DLog(@"error:%@", error.localizedFailureReason);
+    } uploadProgress:^(NSProgress *progress) {
+        DLog(@"progress:%lld,%lld,%f", progress.totalUnitCount, progress.completedUnitCount, progress.fractionCompleted);
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            @strongify(self);
+            self.circularPV.hidden = NO;
+            [self.circularPV setProgress:progress.fractionCompleted];
+        });
+    }];
+    req.showHUD = YES;
+    req.loginModel = self.loginModel;
+    [req startRequest];
+}
 /*
 #pragma mark - Navigation
 

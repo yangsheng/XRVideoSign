@@ -89,7 +89,7 @@
         path = [dict objectForKey:@"path"];
     }
     if (self.successBlock) {
-        self.successBlock(errCode,nil,path);
+        self.successBlock(errCode,dict,path);
     }
 }
 @end

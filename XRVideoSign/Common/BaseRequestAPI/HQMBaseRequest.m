@@ -200,7 +200,8 @@ NSString * const HQMNetworkDomain = @"http://192.168.2.111:9010/xrspip";
 
     //开启状态栏网络状态小菊花
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
-    if (![URLString containsString:@"adjunctupload"]) {
+    //
+    if (![URLString containsString:@"adjunctupload"] && ![URLString containsString:@"detectupload"]) {
         [SVProgressHUD show];
     }
     __block NSURLSessionDataTask *dataTask = nil;
