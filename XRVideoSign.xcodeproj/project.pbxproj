@@ -42,6 +42,9 @@
 		1E2939C821F9E9D60026D6FC /* uploadVideoRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E2939C721F9E9D60026D6FC /* uploadVideoRequest.m */; };
 		1E2A06CA21F29B5F00F5422C /* XRHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E2A06C821F29B5F00F5422C /* XRHomeViewController.m */; };
 		1E2A06CB21F29B5F00F5422C /* XRHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E2A06C921F29B5F00F5422C /* XRHomeViewController.xib */; };
+		1E2D832721FC0F84005A6CE3 /* UIView+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E2D832321FC0F83005A6CE3 /* UIView+Category.m */; };
+		1E2D832821FC0F84005A6CE3 /* NBInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E2D832421FC0F83005A6CE3 /* NBInfoView.m */; };
+		1E2D832921FC0F84005A6CE3 /* NBInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E2D832521FC0F84005A6CE3 /* NBInfoView.xib */; };
 		1E8036A921F1FBF600F465FC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E8036A821F1FBF600F465FC /* AppDelegate.m */; };
 		1E8036AF21F1FBF600F465FC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E8036AD21F1FBF600F465FC /* Main.storyboard */; };
 		1E8036B121F1FBFB00F465FC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E8036B021F1FBFB00F465FC /* Assets.xcassets */; };
@@ -122,6 +125,11 @@
 		1E2A06C721F29B5F00F5422C /* XRHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XRHomeViewController.h; sourceTree = "<group>"; };
 		1E2A06C821F29B5F00F5422C /* XRHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XRHomeViewController.m; sourceTree = "<group>"; };
 		1E2A06C921F29B5F00F5422C /* XRHomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XRHomeViewController.xib; sourceTree = "<group>"; };
+		1E2D832221FC0F83005A6CE3 /* NBInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBInfoView.h; sourceTree = "<group>"; };
+		1E2D832321FC0F83005A6CE3 /* UIView+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Category.m"; sourceTree = "<group>"; };
+		1E2D832421FC0F83005A6CE3 /* NBInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBInfoView.m; sourceTree = "<group>"; };
+		1E2D832521FC0F84005A6CE3 /* NBInfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NBInfoView.xib; sourceTree = "<group>"; };
+		1E2D832621FC0F84005A6CE3 /* UIView+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Category.h"; sourceTree = "<group>"; };
 		1E8036A421F1FBF600F465FC /* XRVideoSign.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XRVideoSign.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E8036A721F1FBF600F465FC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1E8036A821F1FBF600F465FC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -347,6 +355,18 @@
 			path = Others;
 			sourceTree = "<group>";
 		};
+		1E2D832121FC0F5F005A6CE3 /* AlertInfo */ = {
+			isa = PBXGroup;
+			children = (
+				1E2D832221FC0F83005A6CE3 /* NBInfoView.h */,
+				1E2D832421FC0F83005A6CE3 /* NBInfoView.m */,
+				1E2D832521FC0F84005A6CE3 /* NBInfoView.xib */,
+				1E2D832621FC0F84005A6CE3 /* UIView+Category.h */,
+				1E2D832321FC0F83005A6CE3 /* UIView+Category.m */,
+			);
+			path = AlertInfo;
+			sourceTree = "<group>";
+		};
 		1E80369B21F1FBF600F465FC = {
 			isa = PBXGroup;
 			children = (
@@ -398,6 +418,7 @@
 		1E8036C421F2108200F465FC /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
+				1E2D832121FC0F5F005A6CE3 /* AlertInfo */,
 				1E8036C521F2108200F465FC /* CDZPicker */,
 			);
 			path = CustomView;
@@ -505,6 +526,7 @@
 				1E2939B521F9BE580026D6FC /* XRRelationFormViewController.xib in Resources */,
 				1E2939C021F9C5820026D6FC /* XRLiveVideoViewController.xib in Resources */,
 				1E29393121F3D3CC0026D6FC /* XRSlideViewController.xib in Resources */,
+				1E2D832921FC0F84005A6CE3 /* NBInfoView.xib in Resources */,
 				1E8036B421F1FBFB00F465FC /* LaunchScreen.storyboard in Resources */,
 				1E8036CC21F2108200F465FC /* CDZContentView.xib in Resources */,
 				1E2939A021F980630026D6FC /* company.index in Resources */,
@@ -599,7 +621,9 @@
 				1E8036A921F1FBF600F465FC /* AppDelegate.m in Sources */,
 				1E29398221F676770026D6FC /* Reachability.m in Sources */,
 				1E2939A721F982810026D6FC /* CCNetworkCache.m in Sources */,
+				1E2D832821FC0F84005A6CE3 /* NBInfoView.m in Sources */,
 				1E2939A621F982810026D6FC /* CCNetworkHelper.m in Sources */,
+				1E2D832721FC0F84005A6CE3 /* UIView+Category.m in Sources */,
 				1E29397821F674CF0026D6FC /* GTMBase64.m in Sources */,
 				1E29393721F51C7E0026D6FC /* ListTableViewCell.m in Sources */,
 				1E29393021F3D3CC0026D6FC /* XRSlideViewController.m in Sources */,

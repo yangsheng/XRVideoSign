@@ -10,10 +10,11 @@
 #import "XRRelationRequest.h"
 #import "WRNavigationBar.h"
 #import "XRLiveVideoViewController.h"
-
+#import "XRRecordVideoViewController.h"
 #import "uploadLiveFaceRequest.h"
 #import "uploadVideoRequest.h"
 #import "FFCircularProgressView.h"
+#import "NBInfoView.h"
 
 #define ScreenWith     [UIScreen mainScreen].bounds.size.width
 #define ScreenHeight   [UIScreen mainScreen].bounds.size.height
@@ -143,10 +144,31 @@
         DLog(@"errCode:%ld---dict:%@---model:%@", errCode, responseDict, model);
         _circularPV.hidden = YES;
         self.signBtn.enabled = YES;
-        [SVProgressHUD showImage:[UIImage imageNamed:@"112.jpg"] status:@"图片上传成功"];
+        NSDictionary *dic = [[responseDict objectForKey:@"obj"] objectAtIndex:0];
+        NSString *strResult = [NSString stringWithFormat:@"活体检测结果:%@\r\n\r\n人脸核身比对结果:%@\r\n\r\n相似度:%ld",[dic objectForKey:@"live_msg"],[dic objectForKey:@"compare_msg"],[[dic objectForKey:@"sim"] integerValue]];
+        if ([[dic objectForKey:@"live_status"] integerValue] == 0 &&
+            [[dic objectForKey:@"compare_status"] integerValue] == 0
+            ) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                NSDictionary *dic = @{@"title":@"温馨提示",@"content":strResult,@"confirmName":@"进入视频面签"};
+                [[NBInfoView sharedNBInfoView] alertViewShowOnView:self.view ContentDic:dic ButtonAciton:^(NSInteger nIndex) {
+                        XRRecordVideoViewController *VC = [[XRRecordVideoViewController alloc] initWithNibName:@"XRRecordVideoViewController" bundle:nil];
+                        [self.navigationController pushViewController:VC animated:YES];
+                }];
+            });
+        }else{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                NSDictionary *dic = @{@"title":@"温馨提示",@"content":strResult,@"confirmName":@"重新进行活体检测"};
+                [[NBInfoView sharedNBInfoView] alertViewShowOnView:self.view ContentDic:dic ButtonAciton:^(NSInteger nIndex) {
+                    
+                }];
+            });
+        }
+
     } failure:^(NSError *error) {
         self.signBtn.enabled = YES;
         DLog(@"error:%@", error.localizedFailureReason);
+        
     } uploadProgress:^(NSProgress *progress) {
         DLog(@"progress:%lld,%lld,%f", progress.totalUnitCount, progress.completedUnitCount, progress.fractionCompleted);
         

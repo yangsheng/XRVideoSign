@@ -72,7 +72,7 @@ typedef void(^PropertyChangeBlock) (AVCaptureDevice * captureDevice);
 //}
 - (void)setupNav{
     // 设置导航栏颜色
-    [self wr_setNavBarBarTintColor:ssRGBHex(0x495987)];
+    [self wr_setNavBarBarTintColor:[UIColor blackColor]];
     // 设置导航栏按钮和标题颜色
     [self wr_setNavBarTintColor:[UIColor whiteColor]];
     // 设置导航栏标题默认颜色
