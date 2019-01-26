@@ -21,12 +21,24 @@
 
 
 - (NSDictionary *)requestArguments {
+    //
+    NSString *strNO;
+    for (int i=0; i< [self.selectList count]; ++i) {
+        if (i == 0) {
+            NSInteger intValue = [[[self.selectList objectAtIndex:i] objectForKey:@"fID"] integerValue];
+            strNO = [NSString stringWithFormat:@"%ld,",intValue];
+        }else{
+            NSInteger intValue = [[[self.selectList objectAtIndex:i] objectForKey:@"fID"] integerValue];
+            strNO = [NSString stringWithFormat:@"%@%ld,",strNO,intValue];
+        }
+    }
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     NSDictionary *utilObj = @{
-                              @"dataid":@"2048",
-                              @"relationid":@"1112",
+                              @"dataid":[[self.selectList objectAtIndex:0] objectForKey:@"fID"],
+                              @"relationid":[userDefault objectForKey:@"relationID"],
                               @"relationoperid":@"11",
-                              @"relationdataid":@"2048",
-                              @"relationidkeyvalues":@"2048,"
+                              @"relationdataid":[[self.selectList objectAtIndex:0] objectForKey:@"fID"],
+                              @"relationidkeyvalues":strNO
                               };
     NSDictionary *data = @{
                               };

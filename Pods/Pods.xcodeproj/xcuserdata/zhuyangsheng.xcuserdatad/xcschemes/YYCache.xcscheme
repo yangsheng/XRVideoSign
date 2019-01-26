@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C5FDD9D0DF0833C287A6492D3362F4FD"
-               BlueprintName = "WRNavigationBar"
+               BlueprintIdentifier = "4D163B90861900B0A0AE78AFF8484992"
+               BlueprintName = "YYCache"
                ReferencedContainer = "container:Pods.xcodeproj"
-               BuildableName = "libWRNavigationBar.a">
+               BuildableName = "libYYCache.a">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

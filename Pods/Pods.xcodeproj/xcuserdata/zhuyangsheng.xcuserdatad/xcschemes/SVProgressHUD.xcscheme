@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C5FDD9D0DF0833C287A6492D3362F4FD"
-               BlueprintName = "WRNavigationBar"
+               BlueprintIdentifier = "60C2E69EA8AB47A18C5D650C29B9F3E4"
+               BlueprintName = "SVProgressHUD"
                ReferencedContainer = "container:Pods.xcodeproj"
-               BuildableName = "libWRNavigationBar.a">
+               BuildableName = "libSVProgressHUD.a">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

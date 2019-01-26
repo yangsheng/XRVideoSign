@@ -10,6 +10,7 @@
 #import "WRNavigationBar.h"
 #import <AVFoundation/AVFoundation.h>
 #import <AssetsLibrary/AssetsLibrary.h>
+#import "uploadVideoRequest.h"
 
 #define ScreenWith     [UIScreen mainScreen].bounds.size.width
 #define ScreenHeight   [UIScreen mainScreen].bounds.size.height
@@ -110,11 +111,11 @@ typedef void(^PropertyChangeBlock) (AVCaptureDevice * captureDevice);
     //初始化会话
     _captureSession = [[AVCaptureSession alloc] init];
     //设置分辨率
-    if ([_captureSession canSetSessionPreset:AVCaptureSessionPreset1280x720]) {
-        _captureSession.sessionPreset=AVCaptureSessionPreset1280x720;
+    if ([_captureSession canSetSessionPreset:AVCaptureSessionPreset640x480]) {
+        _captureSession.sessionPreset=AVCaptureSessionPreset640x480;
     }
     //获得输入设备
-    AVCaptureDevice * captureDevice = [self getCameraDeviceWithPosition:AVCaptureDevicePositionFront];
+    AVCaptureDevice * captureDevice = [self getCameraDeviceWithPosition:AVCaptureDevicePositionBack];
     if (!captureDevice) {
         NSLog(@"取得前置摄像头时出现问题。");
         return;

@@ -24,11 +24,11 @@
     NSDictionary *utilObj = @{
                               @"objectclassid": @"2",
                               @"objectid":@"4580",
-                              @"dataid":@"2048",
+                              @"dataid":[self.dataDict objectForKey:@"fID"],
                               @"operid":@"0",
                               @"nodeid": @"0",
                               @"relationoperid":@"11",
-                              @"relationdataid":@"2048"
+                              @"relationdataid":[self.dataDict objectForKey:@"fID"]
                               };
     
     NSDictionary *dic = @{

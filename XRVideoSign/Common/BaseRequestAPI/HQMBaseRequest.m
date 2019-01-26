@@ -122,9 +122,9 @@ NSString * const HQMNetworkDomain = @"http://192.168.2.111:9010/xrspip";
     //AFN 已经很强大了，不用手动拼接 URL 参数，AFN 可以帮你处理好 url 入参
     [self constructSessionTask];
 
-    if (self.showHUD) {
-        [SVProgressHUD show];
-    }
+//    if (self.showHUD) {
+//        [SVProgressHUD show];
+//    }
 }
 
 - (void)constructURL {
@@ -200,7 +200,9 @@ NSString * const HQMNetworkDomain = @"http://192.168.2.111:9010/xrspip";
 
     //开启状态栏网络状态小菊花
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
-    [SVProgressHUD show];
+    if (![URLString containsString:@"adjunctupload"]) {
+        [SVProgressHUD show];
+    }
     __block NSURLSessionDataTask *dataTask = nil;
     dataTask = [_manager dataTaskWithRequest:request uploadProgress:uploadProgress downloadProgress:downloadProgress completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
         //关闭状态栏网络状态小菊花

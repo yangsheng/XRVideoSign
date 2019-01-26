@@ -15,6 +15,7 @@ PODS:
   - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
   - CWLateralSlide (1.6.3)
+  - FFCircularProgressView (0.5)
   - IQKeyboardManager (6.2.0)
   - Masonry (1.1.0)
   - MJExtension (3.0.15.1)
@@ -26,6 +27,7 @@ PODS:
 DEPENDENCIES:
   - AFNetworking
   - CWLateralSlide
+  - FFCircularProgressView
   - IQKeyboardManager
   - Masonry
   - MJExtension
@@ -38,6 +40,7 @@ SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - AFNetworking
     - CWLateralSlide
+    - FFCircularProgressView
     - IQKeyboardManager
     - Masonry
     - MJExtension
@@ -49,6 +52,7 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
   CWLateralSlide: 1b9a848873b93de45cfefe6389765b12aa70982c
+  FFCircularProgressView: 683a4ab1e1bd613246a3dffa61503ffdebcde8d8
   IQKeyboardManager: 6194101620b73af5e67900b8f89707a99de0b804
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MJExtension: 19bc33ce2eee2d319760f5622562cf581a6ff756
@@ -57,6 +61,6 @@ SPEC CHECKSUMS:
   WRNavigationBar: dc952230effbb646785f962587caaac06c60f229
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
 
-PODFILE CHECKSUM: 7e5cc03e5a681bdf36c4fbae701890fc507afd81
+PODFILE CHECKSUM: c4633d2179b16119d3e41d917bee107849036ad1
 
 COCOAPODS: 1.6.0.beta.2

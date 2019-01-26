@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface XRRelationRequest : HQMBaseRequest
 @property (nonatomic,strong) LoginModel *loginModel;
 @property (nonatomic, assign) int current_index;
-@property (nonatomic, strong) NSMutableDictionary *dataDict;
+@property (nonatomic, strong) NSMutableArray *selectList;
 @end
 
 NS_ASSUME_NONNULL_END

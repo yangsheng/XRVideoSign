@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C5FDD9D0DF0833C287A6492D3362F4FD"
-               BlueprintName = "WRNavigationBar"
+               BlueprintIdentifier = "059D4ACAC9C9DDFD79AFB167E96EAEE7"
+               BlueprintName = "FFCircularProgressView"
                ReferencedContainer = "container:Pods.xcodeproj"
-               BuildableName = "libWRNavigationBar.a">
+               BuildableName = "libFFCircularProgressView.a">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

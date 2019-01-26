@@ -15,4 +15,5 @@ target 'XRVideoSign' do
   pod 'Masonry'
   pod 'MJRefresh'
   pod 'YYCache'
+  pod 'FFCircularProgressView'
 end

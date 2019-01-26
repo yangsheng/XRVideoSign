@@ -45,7 +45,7 @@
     }];
     
     clazzReq.loginModel = self.loginModel;
-    clazzReq.dataDict = [self.selectList objectAtIndex:0];
+    clazzReq.selectList = self.selectList;
     [clazzReq startRequest];
 }
 

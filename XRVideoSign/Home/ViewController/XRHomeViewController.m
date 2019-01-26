@@ -56,6 +56,7 @@
     XRReportRequest *clazzReq = [XRReportRequest requestWithSuccessBlock:^(NSInteger errCode, NSDictionary *responseDict, id model) {
         if (bFirst) {
            self.signBtn.hidden = NO;
+           self.tableView.mj_footer.hidden = NO;
            self.dataList = [[responseDict objectForKey:@"obj"] objectAtIndex:0];
            [self.tableView.mj_header endRefreshing];
         }else{
@@ -106,6 +107,7 @@
     self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
        [self loadData:NO];
     }];
+    self.tableView.mj_footer.hidden = YES;
 }
 
 -(void)doExit:(id)sender{
@@ -178,6 +180,11 @@
     }
     XRRelationListRequest *clazzReq = [XRRelationListRequest requestWithSuccessBlock:^(NSInteger errCode, NSDictionary *responseDict, id model) {
         NSLog(@"");
+        NSInteger nObjectid = [[[[[responseDict objectForKey:@"obj"] objectAtIndex:0] objectAtIndex:0] objectForKey:@"id"] integerValue];
+        NSString *strObjectid = [NSString stringWithFormat:@"%ld",nObjectid];
+        NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+        [userDefault setObject:strObjectid forKey:@"relationID"];
+        [userDefault synchronize];
         XRRelationFormViewController *VC = [[XRRelationFormViewController alloc] initWithNibName:@"XRRelationFormViewController" bundle:nil];
         VC.loginModel = self.loginModel;
         VC.selectList = self.selectList;
