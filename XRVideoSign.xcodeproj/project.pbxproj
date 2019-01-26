@@ -45,6 +45,7 @@
 		1E2D832721FC0F84005A6CE3 /* UIView+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E2D832321FC0F83005A6CE3 /* UIView+Category.m */; };
 		1E2D832821FC0F84005A6CE3 /* NBInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E2D832421FC0F83005A6CE3 /* NBInfoView.m */; };
 		1E2D832921FC0F84005A6CE3 /* NBInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E2D832521FC0F84005A6CE3 /* NBInfoView.xib */; };
+		1E2D832C21FC1E85005A6CE3 /* XRObjectSaveRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E2D832B21FC1E85005A6CE3 /* XRObjectSaveRequest.m */; };
 		1E8036A921F1FBF600F465FC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E8036A821F1FBF600F465FC /* AppDelegate.m */; };
 		1E8036AF21F1FBF600F465FC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E8036AD21F1FBF600F465FC /* Main.storyboard */; };
 		1E8036B121F1FBFB00F465FC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E8036B021F1FBFB00F465FC /* Assets.xcassets */; };
@@ -130,6 +131,8 @@
 		1E2D832421FC0F83005A6CE3 /* NBInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBInfoView.m; sourceTree = "<group>"; };
 		1E2D832521FC0F84005A6CE3 /* NBInfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NBInfoView.xib; sourceTree = "<group>"; };
 		1E2D832621FC0F84005A6CE3 /* UIView+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Category.h"; sourceTree = "<group>"; };
+		1E2D832A21FC1E85005A6CE3 /* XRObjectSaveRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XRObjectSaveRequest.h; sourceTree = "<group>"; };
+		1E2D832B21FC1E85005A6CE3 /* XRObjectSaveRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XRObjectSaveRequest.m; sourceTree = "<group>"; };
 		1E8036A421F1FBF600F465FC /* XRVideoSign.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XRVideoSign.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E8036A721F1FBF600F465FC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1E8036A821F1FBF600F465FC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -301,6 +304,8 @@
 				1E2939C221F9DC270026D6FC /* uploadLiveFaceRequest.m */,
 				1E2939C621F9E9D60026D6FC /* uploadVideoRequest.h */,
 				1E2939C721F9E9D60026D6FC /* uploadVideoRequest.m */,
+				1E2D832A21FC1E85005A6CE3 /* XRObjectSaveRequest.h */,
+				1E2D832B21FC1E85005A6CE3 /* XRObjectSaveRequest.m */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -597,6 +602,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E2D832C21FC1E85005A6CE3 /* XRObjectSaveRequest.m in Sources */,
 				1E8036CD21F2108200F465FC /* CDZContentView.m in Sources */,
 				1E2939AD21F9A4C70026D6FC /* XRRelationListRequest.m in Sources */,
 				1E29399D21F8E88E0026D6FC /* ReportModel.m in Sources */,

@@ -10,7 +10,7 @@
 #import "XRFaceLiveFourRequest.h"
 #import "CCNetworkHelper.h"
 #import "uploadLiveFaceRequest.h"
-#import "uploadVideoRequest.h"
+
 #import "FFCircularProgressView.h"
 #import "WRNavigationBar.h"
 #import <AVFoundation/AVFoundation.h>
@@ -24,7 +24,7 @@ typedef void(^PropertyChangeBlock) (AVCaptureDevice * captureDevice);
 @interface XRLiveVideoViewController ()<AVCaptureFileOutputRecordingDelegate>//视频文件输出代理
 
 @property (nonatomic,strong) UILabel *codeLabel;
-
+@property (nonatomic,strong) NSString *strCode;
 //负责输入和输出设备之间的数据传输
 @property (nonatomic, strong) AVCaptureSession * captureSession;
 //负责从AVCaptureDevice获得输入数据
@@ -74,8 +74,8 @@ typedef void(^PropertyChangeBlock) (AVCaptureDevice * captureDevice);
 
 - (void)loadFaceLiveData{
     XRFaceLiveFourRequest *clazzReq = [XRFaceLiveFourRequest requestWithSuccessBlock:^(NSInteger errCode, NSDictionary *responseDict, id model) {
-        NSString *strCode = [[responseDict objectForKey:@"obj"] objectAtIndex:0];
-        self.codeLabel.text = [NSString stringWithFormat:@"请对着镜头读出验证码:%@",strCode];
+        self.strCode = [[responseDict objectForKey:@"obj"] objectAtIndex:0];
+        self.codeLabel.text = [NSString stringWithFormat:@"请对着镜头读出验证码:%@",self.strCode];
     } failureBlock:^(NSError *error) {
         DLog(@"error:%@", error.localizedFailureReason);
     }];
@@ -547,7 +547,7 @@ typedef void(^PropertyChangeBlock) (AVCaptureDevice * captureDevice);
     else{
         [self.captureMovieFileOutPut stopRecording];//停止录制
         NSNotificationCenter * center = [NSNotificationCenter defaultCenter];
-        [center postNotificationName:@"SendCheckVideoNofication" object:nil];
+        [center postNotificationName:@"SendCheckVideoNofication" object:@{@"code":self.strCode}];
         [self.navigationController popViewControllerAnimated:NO];
     }
 }

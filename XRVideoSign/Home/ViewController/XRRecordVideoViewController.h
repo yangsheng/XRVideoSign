@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LoginModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface XRRecordVideoViewController : UIViewController
-
+@property (nonatomic,strong) LoginModel *loginModel;
 @end
 
 NS_ASSUME_NONNULL_END

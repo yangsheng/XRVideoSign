@@ -19,20 +19,7 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请点击下方录制视频按钮,清晰读出以下文字：A B C D E F G H I J" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b3H-62-T4v">
-                    <rect key="frame" x="31" y="33" width="314" height="36"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <nil key="highlightedColor"/>
-                </label>
-            </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-            <constraints>
-                <constraint firstItem="b3H-62-T4v" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="13" id="OJu-Qg-Em0"/>
-                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="b3H-62-T4v" secondAttribute="trailing" constant="30" id="fxb-zL-wck"/>
-                <constraint firstItem="b3H-62-T4v" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="31" id="uKZ-iD-8L0"/>
-            </constraints>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
             <point key="canvasLocation" x="39.200000000000003" y="46.326836581709152"/>
         </view>

@@ -11,6 +11,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "uploadVideoRequest.h"
+#import "FFCircularProgressView.h"
 
 #define ScreenWith     [UIScreen mainScreen].bounds.size.width
 #define ScreenHeight   [UIScreen mainScreen].bounds.size.height
@@ -46,6 +47,8 @@ typedef void(^PropertyChangeBlock) (AVCaptureDevice * captureDevice);
 //聚焦光标
 @property (nonatomic, strong) UIImageView * focusCursor;
 
+@property (nonatomic,strong) FFCircularProgressView *circularPV;
+
 @end
 
 @implementation XRRecordVideoViewController
@@ -54,6 +57,8 @@ typedef void(^PropertyChangeBlock) (AVCaptureDevice * captureDevice);
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.title = @"视频面签";
+    self.circularPV = [[FFCircularProgressView alloc] initWithFrame:CGRectMake(ScreenWith/2-50, ScreenHeight/2-50, 100, 100)];
+
     [self setupNav];
     [self setupUI];
     
@@ -507,6 +512,9 @@ typedef void(^PropertyChangeBlock) (AVCaptureDevice * captureDevice);
     }
     else{
         [self.captureMovieFileOutPut stopRecording];//停止录制
+        NSNotificationCenter * center = [NSNotificationCenter defaultCenter];
+        [center postNotificationName:@"SendSaveVideoNofication" object:nil];
+        [self.navigationController popViewControllerAnimated:NO];
     }
 }
 
@@ -514,7 +522,7 @@ typedef void(^PropertyChangeBlock) (AVCaptureDevice * captureDevice);
 - (void)setupUI{
     [self.view setBackgroundColor:[UIColor blackColor]];
     [self.view addSubview:self.contentView];
-    self.contentView.frame = CGRectMake(0, 124, ScreenWith, ScreenHeight-100-124);
+    self.contentView.frame = CGRectMake(0, 0, ScreenWith, ScreenHeight-100);
     
     self.videoButton = [self createCustomButtonWithName:@"录制"];
     [self.videoButton addTarget:self action:@selector(clickVideoButton:) forControlEvents:UIControlEventTouchUpInside];

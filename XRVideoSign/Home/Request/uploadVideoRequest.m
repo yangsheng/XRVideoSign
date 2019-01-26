@@ -75,7 +75,7 @@
         NSData *data = [NSData dataWithContentsOfFile:bundlePath];
         NSLog(@"NSData类方法读取的内容是：%@",[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
         
-        [formData appendPartWithFileData:data name:@"file" fileName:@"123" mimeType:@"mp4/png/jpg/jpeg"];
+        [formData appendPartWithFileData:data name:@"file" fileName:@"123.mp4" mimeType:@"mp4/png/jpg/jpeg"];
         
     };
     

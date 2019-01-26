@@ -1,8 +1,8 @@
 //
-//  uploadLiveFaceRequest.h
+//  XRObjectSaveRequest.h
 //  XRVideoSign
 //
-//  Created by zhu yangsheng on 1/24/19.
+//  Created by zhu yangsheng on 1/26/19.
 //  Copyright © 2019 xrinfo. All rights reserved.
 //
 
@@ -11,10 +11,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface uploadLiveFaceRequest : HQMBaseRequest
+@interface XRObjectSaveRequest : HQMBaseRequest
 @property (nonatomic,strong) LoginModel *loginModel;
-@property (nonatomic, strong) NSMutableDictionary *dataDict;
-@property (nonatomic, strong) NSString *strCode;
 @end
 
 NS_ASSUME_NONNULL_END

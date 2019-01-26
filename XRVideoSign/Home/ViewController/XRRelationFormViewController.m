@@ -88,7 +88,8 @@
     NSNotificationCenter * center = [NSNotificationCenter defaultCenter];
     //注册活体验证的消息
     [center addObserver:self selector:@selector(SendLiveVideoCheck:) name:@"SendCheckVideoNofication" object:nil];
-    
+    //注册视频附件的消息
+    [center addObserver:self selector:@selector(SendSaveVideo:) name:@"SendSaveVideoNofication" object:nil];
     
     [self setupNav];
     [self initUI];
@@ -132,17 +133,40 @@
     VC.loginModel = self.loginModel;
     [self.navigationController pushViewController:VC animated:YES];
 }
-
+- (void)SendSaveVideo:(NSNotification *)notification {
+    self.signBtn.enabled = NO;
+    [self updateVideo];
+}
+- (void)updateVideo{
+    uploadVideoRequest *req = [[uploadVideoRequest alloc] init];
+    [req startUploadTaskWithSuccess:^(NSInteger errCode, NSDictionary *responseDict, id model) {
+        DLog(@"errCode:%ld---dict:%@---model:%@", errCode, responseDict, model);
+        _circularPV.hidden = YES;
+        [SVProgressHUD showImage:[UIImage imageNamed:@"112.jpg"] status:@"图片上传成功"];
+    } failure:^(NSError *error) {
+        DLog(@"error:%@", error.localizedFailureReason);
+    } uploadProgress:^(NSProgress *progress) {
+        DLog(@"progress:%lld,%lld,%f", progress.totalUnitCount, progress.completedUnitCount, progress.fractionCompleted);
+        _circularPV.hidden = NO;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [_circularPV setProgress:progress.fractionCompleted];
+        });
+    }];
+    req.showHUD = YES;
+    req.loginModel = self.loginModel;
+    [req startRequest];
+}
 - (void)SendLiveVideoCheck:(NSNotification *)notification {
     self.signBtn.enabled = NO;
-    [self sendVideoToCheck];
+    NSString *strCode =[notification.object objectForKey:@"code"];
+    [self sendVideoToCheck:strCode];
 }
-- (void)sendVideoToCheck{
+- (void)sendVideoToCheck:(NSString*)strCode{
     @weakify(self);
     uploadLiveFaceRequest *req = [[uploadLiveFaceRequest alloc] init];
     [req startUploadTaskWithSuccess:^(NSInteger errCode, NSDictionary *responseDict, id model) {
         DLog(@"errCode:%ld---dict:%@---model:%@", errCode, responseDict, model);
-        _circularPV.hidden = YES;
+        self.circularPV.hidden = YES;
         self.signBtn.enabled = YES;
         NSDictionary *dic = [[responseDict objectForKey:@"obj"] objectAtIndex:0];
         NSString *strResult = [NSString stringWithFormat:@"活体检测结果:%@\r\n\r\n人脸核身比对结果:%@\r\n\r\n相似度:%ld",[dic objectForKey:@"live_msg"],[dic objectForKey:@"compare_msg"],[[dic objectForKey:@"sim"] integerValue]];
@@ -153,6 +177,7 @@
                 NSDictionary *dic = @{@"title":@"温馨提示",@"content":strResult,@"confirmName":@"进入视频面签"};
                 [[NBInfoView sharedNBInfoView] alertViewShowOnView:self.view ContentDic:dic ButtonAciton:^(NSInteger nIndex) {
                         XRRecordVideoViewController *VC = [[XRRecordVideoViewController alloc] initWithNibName:@"XRRecordVideoViewController" bundle:nil];
+                    VC.loginModel = self.loginModel;
                         [self.navigationController pushViewController:VC animated:YES];
                 }];
             });
@@ -180,6 +205,8 @@
     }];
     req.showHUD = YES;
     req.loginModel = self.loginModel;
+    req.dataDict = [self.selectList objectAtIndex:0];
+    req.strCode = strCode;
     [req startRequest];
 }
 /*

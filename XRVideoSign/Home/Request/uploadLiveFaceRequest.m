@@ -19,9 +19,9 @@
 
 - (NSDictionary *)requestArguments {
     NSDictionary *dicValue = @{
-                          @"idcard":@"340821",
-                          @"name":@"df",
-                          @"vcode":@"1234"
+                          @"idcard":[self.dataDict objectForKey:@"fCardID"],
+                          @"name":[self.dataDict objectForKey:@"fName"],
+                          @"vcode":self.strCode
                           };
     NSData *data = [NSJSONSerialization dataWithJSONObject:dicValue
                                                    options:NSJSONReadingMutableLeaves | NSJSONReadingAllowFragments
