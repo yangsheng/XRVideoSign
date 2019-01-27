@@ -55,6 +55,8 @@
     }
     NSMutableDictionary *childMutDic = [[NSMutableDictionary alloc] initWithDictionary:[[self.objectData objectForKey:@"childDatas"] objectAtIndex:0]];
     
+    [childMutDic setObject:newChildAr forKey:@"datas"];
+    
     NSMutableArray *ar1 = [[NSMutableArray alloc] init];
     [ar1 addObject:childMutDic];
     [mutableDic setObject:ar1 forKey:@"childDatas"];

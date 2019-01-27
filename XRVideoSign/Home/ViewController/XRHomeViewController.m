@@ -180,6 +180,9 @@
     }
     XRRelationListRequest *clazzReq = [XRRelationListRequest requestWithSuccessBlock:^(NSInteger errCode, NSDictionary *responseDict, id model) {
         NSLog(@"");
+        if ([[[responseDict objectForKey:@"obj"] objectAtIndex:0] count] == 0) {
+            return;
+        }
         NSInteger nObjectid = [[[[[responseDict objectForKey:@"obj"] objectAtIndex:0] objectAtIndex:0] objectForKey:@"id"] integerValue];
         NSString *strObjectid = [NSString stringWithFormat:@"%ld",nObjectid];
         NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
