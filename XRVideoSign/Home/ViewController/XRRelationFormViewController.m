@@ -114,7 +114,10 @@
 
 - (void)saveFormData{
     XRObjectSaveRequest *clazzReq = [XRObjectSaveRequest requestWithSuccessBlock:^(NSInteger errCode, NSDictionary *responseDict, id model) {
-
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [SVProgressHUD showInfoWithStatus:@"提交成功"];
+            [self.navigationController popViewControllerAnimated:NO];
+        });
         NSLog(@"");
     } failureBlock:^(NSError *error) {
         DLog(@"error:%@", error.localizedFailureReason);
@@ -213,9 +216,10 @@
 }
 - (void)SendSaveVideo:(NSNotification *)notification {
     self.signBtn.enabled = NO;
- //   [self updateVideo];
+    [self updateVideo];
 }
 - (void)updateVideo{
+    [self.circularPV setProgress:0];
     uploadVideoRequest *req = [[uploadVideoRequest alloc] init];
     [req startUploadTaskWithSuccess:^(NSInteger errCode, NSDictionary *responseDict, id model) {
         DLog(@"errCode:%ld---dict:%@---model:%@", errCode, responseDict, model);
@@ -227,8 +231,8 @@
         DLog(@"error:%@", error.localizedFailureReason);
     } uploadProgress:^(NSProgress *progress) {
         DLog(@"progress:%lld,%lld,%f", progress.totalUnitCount, progress.completedUnitCount, progress.fractionCompleted);
-        _circularPV.hidden = NO;
         dispatch_async(dispatch_get_main_queue(), ^{
+            _circularPV.hidden = NO;
             [_circularPV setProgress:progress.fractionCompleted];
         });
     }];
@@ -243,6 +247,7 @@
 }
 - (void)sendVideoToCheck:(NSString*)strCode{
     @weakify(self);
+
     uploadLiveFaceRequest *req = [[uploadLiveFaceRequest alloc] init];
     [req startUploadTaskWithSuccess:^(NSInteger errCode, NSDictionary *responseDict, id model) {
         DLog(@"errCode:%ld---dict:%@---model:%@", errCode, responseDict, model);

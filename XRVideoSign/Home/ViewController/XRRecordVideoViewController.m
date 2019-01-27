@@ -16,6 +16,7 @@
 #define ScreenWith     [UIScreen mainScreen].bounds.size.width
 #define ScreenHeight   [UIScreen mainScreen].bounds.size.height
 
+static int gcdIdx = 0;
 typedef void(^PropertyChangeBlock) (AVCaptureDevice * captureDevice);
 
 @interface XRRecordVideoViewController ()<AVCaptureFileOutputRecordingDelegate>//视频文件输出代理
@@ -50,7 +51,7 @@ typedef void(^PropertyChangeBlock) (AVCaptureDevice * captureDevice);
 @property (nonatomic,strong) FFCircularProgressView *circularPV;
 
 @property (nonatomic,strong) UILabel *timerLabel;
-
+@property (nonatomic,strong) dispatch_source_t _gcdTimer;
 @end
 
 @implementation XRRecordVideoViewController
@@ -59,6 +60,7 @@ typedef void(^PropertyChangeBlock) (AVCaptureDevice * captureDevice);
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.title = @"视频面签";
+    gcdIdx = 0;
     self.circularPV = [[FFCircularProgressView alloc] initWithFrame:CGRectMake(ScreenWith/2-50, ScreenHeight/2-50, 100, 100)];
 
     [self setupNav];
@@ -73,10 +75,10 @@ typedef void(^PropertyChangeBlock) (AVCaptureDevice * captureDevice);
 //    [super viewWillAppear:animated];
 //}
 //
-//- (void)viewWillDisappear:(BOOL)animated {
-//    [self.navigationController setNavigationBarHidden:NO animated:NO];
-//    [super viewWillDisappear:animated];
-//}
+- (void)viewWillDisappear:(BOOL)animated {
+    dispatch_suspend(self._gcdTimer);
+    [super viewWillDisappear:animated];
+}
 - (void)setupNav{
     // 设置导航栏颜色
     [self wr_setNavBarBarTintColor:[UIColor blackColor]];
@@ -515,11 +517,11 @@ typedef void(^PropertyChangeBlock) (AVCaptureDevice * captureDevice);
     self.timerLabel.text = @"开始计时";
     
     __weak typeof(self) weakSelf = self;
-    dispatch_source_t _gcdTimer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, dispatch_get_global_queue(0, 0));
+    self._gcdTimer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, dispatch_get_global_queue(0, 0));
 
-    dispatch_source_set_timer(_gcdTimer, DISPATCH_TIME_NOW, 2.0 * NSEC_PER_SEC, 0.0 * NSEC_PER_SEC);
-    dispatch_source_set_event_handler(_gcdTimer, ^{
-        static int gcdIdx = 0;
+    dispatch_source_set_timer(self._gcdTimer, DISPATCH_TIME_NOW, 2.0 * NSEC_PER_SEC, 0.0 * NSEC_PER_SEC);
+    dispatch_source_set_event_handler(self._gcdTimer, ^{
+
         NSLog(@"GCD Method: %d", gcdIdx++);
         dispatch_async(dispatch_get_main_queue(), ^{
             NSString *s = [NSString stringWithFormat:@"%d",gcdIdx];
@@ -527,11 +529,11 @@ typedef void(^PropertyChangeBlock) (AVCaptureDevice * captureDevice);
         });
         if(gcdIdx == 10*60*60) {
             // 终止定时器
-            dispatch_suspend(_gcdTimer);
+            dispatch_suspend(self._gcdTimer);
         }
     });
     // 启动任务，GCD计时器创建后需要手动启动
-    dispatch_resume(_gcdTimer);
+    dispatch_resume(self._gcdTimer);
     [self.videoButton setTitle:@"结束" forState:UIControlStateNormal];
     //根据设备输出获得连接
     AVCaptureConnection *captureConnection=[self.captureMovieFileOutPut connectionWithMediaType:AVMediaTypeVideo];
