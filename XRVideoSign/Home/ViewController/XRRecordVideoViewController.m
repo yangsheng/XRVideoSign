@@ -426,7 +426,7 @@ typedef void(^PropertyChangeBlock) (AVCaptureDevice * captureDevice);
 }
 
 - (void)clickTakeButton:(UIButton *)sender{
-    
+    [self.videoButton setTitle:@"结束" forState:UIControlStateNormal];
     //根据设备输出获得连接
     AVCaptureConnection *captureConnection=[self.captureStillImageOutput connectionWithMediaType:AVMediaTypeVideo];
     //根据连接取得设备输出的数据

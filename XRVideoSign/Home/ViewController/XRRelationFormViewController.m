@@ -13,6 +13,7 @@
 #import "XRRecordVideoViewController.h"
 #import "uploadLiveFaceRequest.h"
 #import "uploadVideoRequest.h"
+#import "XRObjectSaveRequest.h"
 #import "FFCircularProgressView.h"
 #import "NBInfoView.h"
 
@@ -25,10 +26,56 @@
 @property (nonatomic, strong) IBOutlet UITextField *idField;
 @property (nonatomic, strong) IBOutlet UILabel *noLabel;
 @property (nonatomic,strong) FFCircularProgressView *circularPV;
+
+@property (nonatomic,strong) NSMutableDictionary *dataPushData;
+@property (nonatomic,strong) NSMutableDictionary *objectData;
+@property (nonatomic,strong) NSMutableDictionary *adjunctData;
+@property (nonatomic,strong) NSMutableDictionary *utilObj;
+
 @end
 
 @implementation XRRelationFormViewController
 
+- (void)insertValueToObjectData{
+    NSMutableArray *ar = [[NSMutableArray alloc] init];
+    for (NSDictionary *dic in [self.objectData objectForKey:@"datas"]) {
+        NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithDictionary:dic];
+        [dict setObject:@"1" forKey:@"operid"];
+        [ar addObject:dict];
+    }
+    NSMutableDictionary *mutableDic = [[NSMutableDictionary alloc] initWithDictionary:self.objectData];
+    [mutableDic setObject:ar forKey:@"datas"];
+    //child datas
+    NSMutableArray *newChildAr = [[NSMutableArray alloc] init];
+    NSArray *oldChildAr = [[[self.objectData objectForKey:@"childDatas"] objectAtIndex:0] objectForKey:@"datas"];
+    for (NSDictionary *dic in oldChildAr) {
+        NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithDictionary:dic];
+        [dict setObject:@"1" forKey:@"operid"];
+        [newChildAr addObject:dict];
+    }
+    NSMutableDictionary *childMutDic = [[NSMutableDictionary alloc] initWithDictionary:[[self.objectData objectForKey:@"childDatas"] objectAtIndex:0]];
+    
+    NSMutableArray *ar1 = [[NSMutableArray alloc] init];
+    [ar1 addObject:childMutDic];
+    [mutableDic setObject:ar1 forKey:@"childDatas"];
+    self.objectData = mutableDic;
+    NSLog(@"sd");
+}
+
+- (void)insertValueToAdjunct:(NSDictionary*)dic{
+    NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithDictionary:dic];
+   
+    NSDateFormatter *dateFormatter=[[NSDateFormatter alloc]init];
+    [dateFormatter setDateFormat:@"EEE MMM ddHH:mm:ss 'CST' yyyy"];
+    NSDate *date=[dateFormatter dateFromString:[dic objectForKey:@"createdate"]];
+    NSInteger timeSp = [[NSNumber numberWithDouble:[date timeIntervalSince1970]] integerValue];
+    
+    NSString *strTime = [NSString stringWithFormat:@"%ld",timeSp];
+    [dict setObject:strTime forKey:@"createdate"];
+    [dict setObject:@"1" forKey:@"operID"];
+    self.adjunctData = dict;
+    NSLog(@"sd");
+}
 - (void)loadRelationData{
     XRRelationRequest *clazzReq = [XRRelationRequest requestWithSuccessBlock:^(NSInteger errCode, NSDictionary *responseDict, id model) {
         /*
@@ -36,6 +83,12 @@
          "dataid":mainData.get("fID"),// 主表数据中的fID
          "adjunctclassid":Math.abs(adjunctClasss.get(0).get("id"))// 取第一个附件分类的绝对值
          */
+        self.objectData = [[[responseDict objectForKey:@"obj"] objectAtIndex:4] objectForKey:@"objectData"];
+        self.dataPushData = [[[responseDict objectForKey:@"obj"] objectAtIndex:4] objectForKey:@"dataPushData"];
+        self.adjunctData = [[[responseDict objectForKey:@"obj"] objectAtIndex:4] objectForKey:@"adjunctData"];
+        [self insertValueToObjectData];
+        
+        self.utilObj = [[[responseDict objectForKey:@"obj"] objectAtIndex:4] objectForKey:@"utilObj"];
         NSInteger nObjectid = [[[[responseDict objectForKey:@"obj"] objectAtIndex:0] objectForKey:@"objectid"] integerValue];
         NSString *strObjectid = [NSString stringWithFormat:@"%ld",nObjectid];
      
@@ -57,6 +110,29 @@
     [clazzReq startRequest];
 }
 
+- (void)saveFormData{
+    XRObjectSaveRequest *clazzReq = [XRObjectSaveRequest requestWithSuccessBlock:^(NSInteger errCode, NSDictionary *responseDict, id model) {
+
+        NSLog(@"");
+    } failureBlock:^(NSError *error) {
+        DLog(@"error:%@", error.localizedFailureReason);
+    }];
+    /*
+     @property (nonatomic,strong) NSMutableDictionary *dataPushData;
+     @property (nonatomic,strong) NSMutableDictionary *objectData;
+     @property (nonatomic,strong) NSMutableDictionary *adjunctData;
+     @property (nonatomic,strong) NSMutableDictionary *utilObj;
+     */
+    clazzReq.loginModel = self.loginModel;
+    clazzReq.dataPushData = self.dataPushData;
+    clazzReq.objectData = self.objectData;
+    clazzReq.adjunctData = self.adjunctData;
+    clazzReq.utilObj = self.utilObj;
+    
+ //   clazzReq.selectList = self.selectList;
+    [clazzReq startRequest];
+    
+}
 - (void)initUI{
     NSDictionary *dic = [self.selectList objectAtIndex:0];
     self.nameField.text = [dic objectForKey:@"fName"];
@@ -142,7 +218,9 @@
     [req startUploadTaskWithSuccess:^(NSInteger errCode, NSDictionary *responseDict, id model) {
         DLog(@"errCode:%ld---dict:%@---model:%@", errCode, responseDict, model);
         _circularPV.hidden = YES;
-        [SVProgressHUD showImage:[UIImage imageNamed:@"112.jpg"] status:@"图片上传成功"];
+        self.adjunctData = [[responseDict objectForKey:@"obj"] objectAtIndex:0];
+        [self insertValueToAdjunct:self.adjunctData];
+        [self saveFormData];
     } failure:^(NSError *error) {
         DLog(@"error:%@", error.localizedFailureReason);
     } uploadProgress:^(NSProgress *progress) {

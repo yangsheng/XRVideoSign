@@ -22,39 +22,17 @@
 
 
 - (NSDictionary *)requestArguments {
-
-    NSDictionary *utilObj = @{
-                              @"sysmoduleid": @"mui_REP_ASD_spVideoGetContract",
-                              @"objectclassid": @"1",
-                              @"objectid":@"4580",
-                              @"dataid":@"0",
-                              @"operid":@"0",
-                              @"relationid":@"0"
-                              };
+    NSArray *adjunctArray = @[self.adjunctData];
     
-    //    NSDictionary *filter = @{
-    //                                 @"@ShowC@": @"0",
-    //                                 @"@sNO@": @"",
-    //                                 @"@sName@":@"",
-    //                                 @"@ASD_MachineCompany@":@"",
-    //                                 @"@ShowD@":@"1",
-    //                                 @"@MachineDeptID@":@"",
-    //                                 @"@RZ_DealerName@":@""
-    //                                 };
-    
-    NSDictionary *utilPage = @{
-                               @"currentPage": @"",
-                               @"pageSize": @"20"
-                               };
-    
-    NSDictionary *dataFilter = @{
-                                 @"utilPage": utilPage,
-                                 @"filter": @""
-                                 };
+    NSDictionary *dicParam = @{
+                           @"utilObj":self.utilObj,
+                           @"dataPushData":self.dataPushData,
+                           @"objectData":self.objectData,
+                           @"adjunctData":@{@"adjuncts":adjunctArray}
+                           };
     
     NSDictionary *dic = @{
-                          @"utilObj": utilObj,
-                          @"dataFilter": dataFilter
+                          @"dataOper": dicParam
                           };
     
     NSString *jsonString = [XRTools convertToJsonData:dic];
