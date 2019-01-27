@@ -9,7 +9,7 @@
 #import "XRSlideViewController.h"
 
 @interface XRSlideViewController ()
-
+@property (nonatomic,strong) IBOutlet UILabel *roleLabel;
 @end
 
 @implementation XRSlideViewController
@@ -17,6 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    self.roleLabel.text = self.loginModel.name;
 }
 
 /*

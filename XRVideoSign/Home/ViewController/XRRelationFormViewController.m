@@ -213,7 +213,7 @@
 }
 - (void)SendSaveVideo:(NSNotification *)notification {
     self.signBtn.enabled = NO;
-    [self updateVideo];
+ //   [self updateVideo];
 }
 - (void)updateVideo{
     uploadVideoRequest *req = [[uploadVideoRequest alloc] init];

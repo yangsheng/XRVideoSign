@@ -110,6 +110,11 @@
     self.tableView.mj_footer.hidden = YES;
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+  //  [self loadFormData];
+}
+
 -(void)doExit:(id)sender{
     [self.navigationController popToViewController:self.vc animated:NO];
 }
@@ -154,6 +159,7 @@
 
 - (void)leftClick{
     XRSlideViewController *slideVC = [[XRSlideViewController alloc] initWithNibName:@"XRSlideViewController" bundle:nil];
+    slideVC.loginModel = self.loginModel;
     CWLateralSlideConfiguration *conf = [CWLateralSlideConfiguration defaultConfiguration];
     conf.direction = CWDrawerTransitionFromLeft;
     conf.distance = kCWSCREENWIDTH * 0.6;
@@ -181,6 +187,11 @@
     XRRelationListRequest *clazzReq = [XRRelationListRequest requestWithSuccessBlock:^(NSInteger errCode, NSDictionary *responseDict, id model) {
         NSLog(@"");
         if ([[[responseDict objectForKey:@"obj"] objectAtIndex:0] count] == 0) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [SVProgressHUD setBackgroundColor:[UIColor lightGrayColor]];
+                [SVProgressHUD showErrorWithStatus:@"下推对象列表数据为空"];
+            });
+
             return;
         }
         NSInteger nObjectid = [[[[[responseDict objectForKey:@"obj"] objectAtIndex:0] objectAtIndex:0] objectForKey:@"id"] integerValue];

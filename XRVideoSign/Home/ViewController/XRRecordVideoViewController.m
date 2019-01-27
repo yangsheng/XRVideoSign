@@ -49,6 +49,8 @@ typedef void(^PropertyChangeBlock) (AVCaptureDevice * captureDevice);
 
 @property (nonatomic,strong) FFCircularProgressView *circularPV;
 
+@property (nonatomic,strong) UILabel *timerLabel;
+
 @end
 
 @implementation XRRecordVideoViewController
@@ -196,18 +198,18 @@ typedef void(^PropertyChangeBlock) (AVCaptureDevice * captureDevice);
     NSLog(@"视频录制完成.");
     //视频录入完成之后在后台将视频存储到相簿
     //  self.enableRotation=YES;
-    UIBackgroundTaskIdentifier lastBackgroundTaskIdentifier=self.backgroundTaskIdentifier;
-    self.backgroundTaskIdentifier=UIBackgroundTaskInvalid;
-    ALAssetsLibrary *assetsLibrary=[[ALAssetsLibrary alloc]init];
-    [assetsLibrary writeVideoAtPathToSavedPhotosAlbum:outputFileURL completionBlock:^(NSURL *assetURL, NSError *error) {
-        if (error) {
-            NSLog(@"保存视频到相簿过程中发生错误，错误信息：%@",error.localizedDescription);
-        }
-        if (lastBackgroundTaskIdentifier!=UIBackgroundTaskInvalid) {
-            [[UIApplication sharedApplication] endBackgroundTask:lastBackgroundTaskIdentifier];
-        }
-        NSLog(@"成功保存视频到相簿.");
-    }];
+//    UIBackgroundTaskIdentifier lastBackgroundTaskIdentifier=self.backgroundTaskIdentifier;
+//    self.backgroundTaskIdentifier=UIBackgroundTaskInvalid;
+//    ALAssetsLibrary *assetsLibrary=[[ALAssetsLibrary alloc]init];
+//    [assetsLibrary writeVideoAtPathToSavedPhotosAlbum:outputFileURL completionBlock:^(NSURL *assetURL, NSError *error) {
+//        if (error) {
+//            NSLog(@"保存视频到相簿过程中发生错误，错误信息：%@",error.localizedDescription);
+//        }
+//        if (lastBackgroundTaskIdentifier!=UIBackgroundTaskInvalid) {
+//            [[UIApplication sharedApplication] endBackgroundTask:lastBackgroundTaskIdentifier];
+//        }
+//        NSLog(@"成功保存视频到相簿.");
+//    }];
     
 }
 
@@ -426,7 +428,6 @@ typedef void(^PropertyChangeBlock) (AVCaptureDevice * captureDevice);
 }
 
 - (void)clickTakeButton:(UIButton *)sender{
-    [self.videoButton setTitle:@"结束" forState:UIControlStateNormal];
     //根据设备输出获得连接
     AVCaptureConnection *captureConnection=[self.captureStillImageOutput connectionWithMediaType:AVMediaTypeVideo];
     //根据连接取得设备输出的数据
@@ -492,8 +493,46 @@ typedef void(^PropertyChangeBlock) (AVCaptureDevice * captureDevice);
     [self setFlashModeButtonStatus];
 }
 
-- (void)clickVideoButton:(UIButton *)sender{
+//传入 秒  得到 xx:xx:xx
+-(NSString *)getMMSSFromSS:(NSString *)totalTime{
     
+    NSInteger seconds = [totalTime integerValue];
+    
+    //format of hour
+    NSString *str_hour = [NSString stringWithFormat:@"%02ld",seconds/3600];
+    //format of minute
+    NSString *str_minute = [NSString stringWithFormat:@"%02ld",(seconds%3600)/60];
+    //format of second
+    NSString *str_second = [NSString stringWithFormat:@"%02ld",seconds%60];
+    //format of time
+    NSString *format_time = [NSString stringWithFormat:@"%@:%@:%@",str_hour,str_minute,str_second];
+    
+    return format_time;
+    
+}
+
+- (void)clickVideoButton:(UIButton *)sender{
+    self.timerLabel.text = @"开始计时";
+    
+    __weak typeof(self) weakSelf = self;
+    dispatch_source_t _gcdTimer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, dispatch_get_global_queue(0, 0));
+
+    dispatch_source_set_timer(_gcdTimer, DISPATCH_TIME_NOW, 2.0 * NSEC_PER_SEC, 0.0 * NSEC_PER_SEC);
+    dispatch_source_set_event_handler(_gcdTimer, ^{
+        static int gcdIdx = 0;
+        NSLog(@"GCD Method: %d", gcdIdx++);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSString *s = [NSString stringWithFormat:@"%d",gcdIdx];
+            weakSelf.timerLabel.text = [NSString stringWithFormat:@"开始计时:%@",[weakSelf getMMSSFromSS:s]];
+        });
+        if(gcdIdx == 10*60*60) {
+            // 终止定时器
+            dispatch_suspend(_gcdTimer);
+        }
+    });
+    // 启动任务，GCD计时器创建后需要手动启动
+    dispatch_resume(_gcdTimer);
+    [self.videoButton setTitle:@"结束" forState:UIControlStateNormal];
     //根据设备输出获得连接
     AVCaptureConnection *captureConnection=[self.captureMovieFileOutPut connectionWithMediaType:AVMediaTypeVideo];
     //根据连接取得设备输出的数据
@@ -522,7 +561,13 @@ typedef void(^PropertyChangeBlock) (AVCaptureDevice * captureDevice);
 - (void)setupUI{
     [self.view setBackgroundColor:[UIColor blackColor]];
     [self.view addSubview:self.contentView];
-    self.contentView.frame = CGRectMake(0, 0, ScreenWith, ScreenHeight-100);
+    self.contentView.frame = CGRectMake(0, 124, ScreenWith, ScreenHeight-100-124);
+    
+    //文字
+    self.timerLabel = [[UILabel alloc] init];
+    self.timerLabel.frame = CGRectMake(30, 70, ScreenWith, 40);
+    self.timerLabel.textColor = [UIColor whiteColor];
+    [self.view addSubview:self.timerLabel];
     
     self.videoButton = [self createCustomButtonWithName:@"录制"];
     [self.videoButton addTarget:self action:@selector(clickVideoButton:) forControlEvents:UIControlEventTouchUpInside];

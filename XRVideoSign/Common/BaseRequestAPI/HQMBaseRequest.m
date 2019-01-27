@@ -202,7 +202,11 @@ NSString * const HQMNetworkDomain = @"http://192.168.2.111:9010/";
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     //
     if (![URLString containsString:@"adjunctupload"] && ![URLString containsString:@"detectupload"]) {
-        [SVProgressHUD show];
+        dispatch_async(dispatch_get_main_queue(), ^{
+           [SVProgressHUD dismiss];
+           [SVProgressHUD show];
+        });
+
     }
     __block NSURLSessionDataTask *dataTask = nil;
     dataTask = [_manager dataTaskWithRequest:request uploadProgress:uploadProgress downloadProgress:downloadProgress completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {

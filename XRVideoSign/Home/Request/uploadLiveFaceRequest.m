@@ -36,7 +36,7 @@
 
     return @{
              @"param":string,
-             @"file":@"123.mp4"
+             @"file":@"myMovie.mp4"
              };
 }
 
@@ -64,11 +64,13 @@
         NSString *dateString = [formatter stringFromDate:[NSDate date]];
  
         //
-        NSString * bundlePath = [[NSBundle mainBundle] pathForResource: @"123"ofType :@"mp4"];
-        NSData *data = [NSData dataWithContentsOfFile:bundlePath];
+//        NSString * bundlePath = [[NSBundle mainBundle] pathForResource: @"123"ofType :@"mp4"];
+        
+        NSString *outputFielPath=[NSTemporaryDirectory() stringByAppendingString:@"myMovie.mp4"];
+        NSData *data = [NSData dataWithContentsOfFile:outputFielPath];
         NSLog(@"NSData类方法读取的内容是：%@",[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
         
-        [formData appendPartWithFileData:data name:@"file" fileName:@"123" mimeType:@"mp4/png/jpg/jpeg"];
+        [formData appendPartWithFileData:data name:@"file" fileName:@"myMovie" mimeType:@"mp4/png/jpg/jpeg"];
             
     };
     
