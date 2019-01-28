@@ -34,6 +34,11 @@
 - (void)viewWillAppear:(BOOL)animated {
     [self.navigationController setNavigationBarHidden:YES animated:NO];
     [super viewWillAppear:animated];
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *strUserName = [userDefaults objectForKey:@"userName"];
+    if (strUserName) {
+        self.userText.text = strUserName;
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -44,8 +49,8 @@
 -(void)initUI{
     self.loginBtn.layer.cornerRadius = 15;
     self.groupText.text = @"国金资本";
-    self.userText.text = @"administrator";
-    self.pwdText.text = @"sun";
+
+ //   self.pwdText.text = @"";
 }
 
 - (IBAction)loginBtnClicked:(id)sender {
@@ -53,6 +58,10 @@
     XRLoginRequest *clazzReq = [XRLoginRequest requestWithSuccessBlock:^(NSInteger errCode, NSDictionary *responseDict, id model) {
         BOOL bRet = [[responseDict objectForKey:@"success"] boolValue];
         if (bRet) {
+            NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+            [userDefaults setObject:self.userText.text forKey:@"userName"];
+            [userDefaults synchronize];
+            
             XRHomeViewController *homeVC = [[XRHomeViewController alloc] initWithNibName:@"XRHomeViewController" bundle:nil];
             homeVC.vc = self;
             homeVC.loginModel = model;

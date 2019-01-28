@@ -97,6 +97,8 @@
     NSNotificationCenter * center = [NSNotificationCenter defaultCenter];
     //添加当前类对象为一个观察者，name和object设置为nil，表示接收一切通知
     [center addObserver:self selector:@selector(doExit:) name:@"ExitNofication" object:nil];
+    [center addObserver:self selector:@selector(saveFormSuccess:) name:@"SaveFormNofication" object:nil];
+    
     [self registerSlideGesture];
     
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -118,7 +120,9 @@
 -(void)doExit:(id)sender{
     [self.navigationController popToViewController:self.vc animated:NO];
 }
-
+-(void)saveFormSuccess:(id)sender{
+    [self loadFormData];
+}
 - (void)registerSlideGesture{
     // 注册手势驱动
     __weak typeof(self)weakSelf = self;

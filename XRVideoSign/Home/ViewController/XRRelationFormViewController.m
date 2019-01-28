@@ -41,6 +41,8 @@
     for (NSDictionary *dic in [self.objectData objectForKey:@"datas"]) {
         NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithDictionary:dic];
         [dict setObject:@"1" forKey:@"operid"];
+        [dict setObject:self.nameField.text forKey:@"fName"];
+        [dict setObject:self.idField.text forKey:@"fCardID"];
         [ar addObject:dict];
     }
     NSMutableDictionary *mutableDic = [[NSMutableDictionary alloc] initWithDictionary:self.objectData];
@@ -88,7 +90,7 @@
         self.objectData = [[[responseDict objectForKey:@"obj"] objectAtIndex:4] objectForKey:@"objectData"];
         self.dataPushData = [[[responseDict objectForKey:@"obj"] objectAtIndex:4] objectForKey:@"dataPushData"];
         self.adjunctData = [[[responseDict objectForKey:@"obj"] objectAtIndex:4] objectForKey:@"adjunctData"];
-        [self insertValueToObjectData];
+//        [self insertValueToObjectData];
         
         self.utilObj = [[[responseDict objectForKey:@"obj"] objectAtIndex:4] objectForKey:@"utilObj"];
         NSInteger nObjectid = [[[[responseDict objectForKey:@"obj"] objectAtIndex:0] objectForKey:@"objectid"] integerValue];
@@ -113,9 +115,14 @@
 }
 
 - (void)saveFormData{
+    [self insertValueToObjectData];
     XRObjectSaveRequest *clazzReq = [XRObjectSaveRequest requestWithSuccessBlock:^(NSInteger errCode, NSDictionary *responseDict, id model) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [SVProgressHUD showInfoWithStatus:@"提交成功"];
+            //创建一个消息对象
+            NSNotification * notice = [NSNotification notificationWithName:@"SaveFormNofication" object:nil userInfo:nil];
+            //发送消息
+            [[NSNotificationCenter defaultCenter] postNotification:notice];
             [self.navigationController popViewControllerAnimated:NO];
         });
         NSLog(@"");
