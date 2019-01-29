@@ -24,10 +24,10 @@ NSString * const HQMNetworkDomain = @"http://123.207.109.93:9010";
 
 #else //处于发布正式阶段
 
-NSString * const HQMNetworkDomain = @"http://192.168.2.111:9010/";
+NSString * const HQMNetworkDomain = @"http://123.207.109.93:9010";
 
 ///< 开启https SSL 验证
-#define kOpenHttpsAuth YES
+#define kOpenHttpsAuth NO
 
 #endif
 
@@ -458,9 +458,11 @@ NSString * const HQMNetworkDomain = @"http://192.168.2.111:9010/";
     //那么，除了导入*.google.com之外，还需要导入证书链上所有的CA证书（GeoTrust Global CA, Google Internet Authority G2）；
     //如是自建证书的时候，可以设置为YES，增强安全性；假如是信任的CA所签发的证书，则建议关闭该验证，因为整个证书链一一比对是完全没有必要（请查看源代码）；
 //    securityPolicy.validatesCertificateChain = NO;
+    if (cerData != nil) {
+        NSSet *cerDataSet = [NSSet setWithArray:@[cerData]];
+        securityPolicy.pinnedCertificates = cerDataSet;
+    }
 
-    NSSet *cerDataSet = [NSSet setWithArray:@[cerData]];
-    securityPolicy.pinnedCertificates = cerDataSet;
 
     return securityPolicy;
 }

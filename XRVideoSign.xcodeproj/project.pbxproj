@@ -775,6 +775,7 @@
 			baseConfigurationReference = 589BB21F9A5152D669ED8488 /* Pods-XRVideoSign.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 89D6WNK76M;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
@@ -786,8 +787,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.xrinfo.XRVideoSign1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.buusoft.XRVideoSign;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -797,6 +799,7 @@
 			baseConfigurationReference = 989E9A3B28E1936B9D030940 /* Pods-XRVideoSign.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 89D6WNK76M;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
@@ -808,8 +811,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.xrinfo.XRVideoSign1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.buusoft.XRVideoSign;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
